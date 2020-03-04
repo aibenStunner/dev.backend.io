@@ -2,9 +2,12 @@ const express = require("express");
 const app = express();
 const port = 4000;
 const bodyParser = require("body-parser");
+const path = require("path");
 const cors = require("cors");
 const SimpleCrypto = require("simple-crypto-js").default;
-const cameras = require("./store").cameras;
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+const cameras = require("./cameras").cameras;
 
 //Setting up middlewares
 app.use(cors());
@@ -17,31 +20,30 @@ function getSecret() {
 }
 
 //Return encrypted link
-function encryptLink(camera_name) {
+function encryptCameraLink(camera_id) {
   let encryptor = new SimpleCrypto(getSecret());
-  return encryptor.encrypt(cameras[camera_name]);
+  return encryptor.encrypt(cameras[camera_id]);
 }
 
-// This function decrypts the encrypted link. Only for testing purposes
-// function decryptLink(secret, crypt) {
-//   let decryptor = new SimpleCrypto(secret);
-//   return decryptor.decrypt(crypt);
-// }
-
-//GET Handlers
-app.get("/stream", (req, res) => {
-  res.json(encryptLink("cam_1") + getSecret());
-});
-
-// WARNING: Do not uncomment in production!
-// app.get("/decrypt", (req, res) => {
-//   res.send(decryptLink(req.query.date, req.query.auth));
-// });
+//Return object containing camera id and encrypted source
+function getStreamObject(camera_id) {
+  return {
+    c: camera_id,
+    s: encryptCameraLink(camera_id)
+  };
+}
 
 //POST Handlers
+app.get("/login", (req, res) => {});
+
+//Handler for stream object request
 app.post("/feed", (req, res) => {
-  console.log(req.body);
-  res.json("Received");
+  res.json(getStreamObject(req.body.camera_id));
+});
+
+//GET Handler
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/404.html"));
 });
 
 //Listener
