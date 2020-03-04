@@ -43,7 +43,7 @@ app.post("/feed", (req, res) => {
 
 //GET Handler
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/404.html"));
+  res.sendFile(path.join(__dirname + "/public/404.html"));
 });
 
 //Listener
