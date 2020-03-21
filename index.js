@@ -11,15 +11,14 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//POST Handlers
-app.post('/login', (req, res) => postHandler.login(req, res));
+//Listener
+app.listen(4000, () => {
+  console.log(`Live! on 4000`);
+});
 
-app.post('/feed', (req, res) => postHandler.feed(req, res));
+// POST Handlers
+app.post('/login', (req, res) => postHandler.login(req, res));
+app.get('/feed', (req, res) => postHandler.feed(req, res, true));
 
 //GET Handler
 app.get('/*', (req, res) => getHandler.get_404(res));
-
-//Listener
-app.listen(4000, () => {
-  console.log('Live!');
-});
