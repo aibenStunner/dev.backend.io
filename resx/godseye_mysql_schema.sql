@@ -57,3 +57,13 @@ CREATE TABLE ward (
   KEY RefClass2 (classId),
   KEY RefTeacher3 (teacherId)
 )
+
+-- Table structure for table camera
+
+DROP TABLE IF EXISTS camera;
+CREATE TABLE camera (
+  cameraId int NOT NULL AUTO_INCREMENT,
+  cameraDomain varchar(100) NOT NULL,
+  cameraLocation varchar(100),
+  PRIMARY KEY (cameraId)
+)
