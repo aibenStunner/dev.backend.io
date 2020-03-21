@@ -2,10 +2,10 @@ const cryptor = require('./secrets').camera_cryptor;
 
 var camera_data = {};
 const _camera_data = {
-  cam_golf: 'http://wmccpinetop.axiscam.net/mjpg/video.mjpg',
-  cam_two: 'http://208.72.70.172/mjpg/video.mjpg',
-  cam_three: 'http://158.58.130.148/mjpg/video.mjpg',
-  cam_proto: 'http://192.168.1.102:8081'
+  cam_001: 'http://wmccpinetop.axiscam.net/mjpg/video.mjpg',
+  cam_002: 'http://208.72.70.172/mjpg/video.mjpg',
+  cam_003: 'http://158.58.130.148/mjpg/video.mjpg',
+  cam_004: 'http://192.168.1.102:8081'
 };
 
 Object.keys(_camera_data).forEach(key => {

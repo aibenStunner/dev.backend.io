@@ -3,7 +3,7 @@ module.exports = {
   login(req, res) {},
 
   feed(req, res, LOGGED_IN) {
-    let camera_name = req.query.camera;
+    let camera_name = req.body.camera;
 
     if (camera_name != null && LOGGED_IN && camera.cameraExists(camera_name))
       res.json(camera.getCameraData(camera_name));
