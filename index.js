@@ -17,8 +17,8 @@ app.listen(4000, () => {
 });
 
 // POST Handlers
-app.post('/login', (req, res) => postHandler.login(req, res));
-app.post('/feed', (req, res) => postHandler.feed(req, res, true));
+app.post('/login', (req, res) => res.send(postHandler.login()));
+app.get('/feed', (req, res) => res.send(postHandler.feed(req.query, true)));
 
 //GET Handler
-app.get('/*', (req, res) => getHandler.get_404(res));
+app.get('/*', (req, res) => res.status(404).sendFile(getHandler.get_404(res)));

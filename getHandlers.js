@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  get_404(res) {
-    res.sendFile(path.join(__dirname + '/resx/404.html'));
+  get_404() {
+    return path.join(__dirname + '/resx/404.html');
   }
 };

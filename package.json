@@ -5,12 +5,13 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "global": "^4.4.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.2",
     "simple-crypto-js": "^2.2.0"
   },
   "scripts": {
-    "start": "node index"
+    "start": "npx nodemon index"
   },
   "license": "UNLICENSED",
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

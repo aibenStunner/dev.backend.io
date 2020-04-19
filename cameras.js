@@ -1,33 +1,17 @@
+const error = require('./error_codes');
 const cryptor = require('./secrets').camera_cryptor;
+const db_connector = require('./secrets').db_connection;
 
 var camera_data = {};
-const _camera_data = {
-  cam_001: 'http://wmccpinetop.axiscam.net/mjpg/video.mjpg',
-  cam_002: 'http://208.72.70.172/mjpg/video.mjpg',
-  cam_003: 'http://158.58.130.148/mjpg/video.mjpg',
-  cam_004: 'http://192.168.1.102:8081'
-};
 
-Object.keys(_camera_data).forEach(key => {
-  camera_data[key] = cryptor.encrypt(_camera_data[key]);
-});
-
-function cameraExists(camera_name) {
-  return Object.keys(camera_data).includes(camera_name);
+function cameraExists(camera_id) {
+  
+  return false;
 }
 
-function getCameraData(camera_name) {
-  return {
-    camera: camera_name,
-    location: camera_data[camera_name]
-  };
-}
+function getCameraData(camera_id) {}
 
 module.exports = {
   getCameraData,
   cameraExists
 };
-
-/* Test
-console.log(camera_data);
-*/

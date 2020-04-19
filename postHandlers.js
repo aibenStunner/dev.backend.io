@@ -1,12 +1,21 @@
+const error = require('./error_codes');
 const camera = require('./cameras');
 module.exports = {
-  login(req, res) {},
+  login() {},
 
-  feed(req, res, LOGGED_IN) {
-    let camera_name = req.body.camera;
-
-    if (camera_name != null && LOGGED_IN && camera.cameraExists(camera_name))
-      res.json(camera.getCameraData(camera_name));
-    else res.json('Access Denied');
+  feed(body, isLoggedIn) {
+    if (isLoggedIn) {
+      if (body.camera) {
+        if (camera.cameraExists(body.camera)) {
+          console.log('Yeah');
+        } else {
+          console.error(error.c025);
+        }
+      } else {
+        console.error(error.c023);
+      }
+    } else {
+      console.error(error.a001);
+    }
   }
 };
