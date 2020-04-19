@@ -21,6 +21,7 @@
   },
   "homepage": "https://gitlab.com/dev.io/dev.backend.io#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "passport": "^0.4.1"
   }
 }
