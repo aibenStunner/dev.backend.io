@@ -1,16 +1,15 @@
 const mysql = require('mysql')
 const DBMeta = require('./db_cred')
-
+const hashSuite = require('./password-hasher')
 /**
  *
  * @param {String} username
  * @param {String} password
- * @returns {} Returns true if login is successful, false if record was not found, and throws a MySQL error if generated.
+ * @returns {void} Access the fetched record through the callback
  */
 function login(username, password, callback) {
 	const connection = mysql.createConnection(DBMeta.godseyeDB)
 	connection.connect()
-	console.log(`${username}:${password}`)
 
 	connection.query(
 		`SELECT * from parent WHERE email='${username}' AND password='${password}'`,
