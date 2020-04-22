@@ -1,10 +1,14 @@
-const DBMeta = require('./src/db_cred.js')
 const express = require('express')
 const app = express()
 const session = require('express-session')
+const bodyParser = require('body-parser')
 const MySQLStore = require('express-mysql-session')(session)
 
 //Server Meta
+const DBMeta = require('./src/db_cred.js')
+
+//Functions
+const authenticateUser = require('./src/login')
 
 // Immutables
 const port = process.env.PORT || 5000
@@ -20,6 +24,9 @@ app.use(
 	})
 )
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // GET Handler
 app.get('/*', (req, res) =>
 	res.sendFile('/views/index.html', { root: __dirname }, (err) => {
@@ -29,10 +36,19 @@ app.get('/*', (req, res) =>
 
 // POST Handlers
 app.post('/login', (req, res, next) => {
-	if (req.session.user) {
+	if (req.session.userId) {
 		res.send('Already logged in')
 	} else {
-		res.send('Logged In')
+		let user
+		authenticateUser(req.body.username, req.body.password, (record) => {
+			if (record) {
+				req.session.userId = record.parentId
+				req.session.username = record.username
+				res.send('Logged In')
+			} else {
+				res.send('Login failed. Check credentials')
+			}
+		})
 	}
 })
 
