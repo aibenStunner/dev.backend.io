@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `godseyeDB` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `godseyeDB`;
+CREATE DATABASE  IF NOT EXISTS `godseye_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `godseye_db`;
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: godseyeDB
+-- Host: localhost    Database: godseye_db
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
