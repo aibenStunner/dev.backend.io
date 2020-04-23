@@ -5,10 +5,10 @@ const bodyParser = require('body-parser')
 const MySQLStore = require('express-mysql-session')(session)
 
 //Server Meta
-const DBMeta = require('./src/db_cred.js')
+const DBMeta = require('./src/auth/db_cred.js')
 
 //Functions
-const authenticateUser = require('./src/login')
+const authenticateUser = require('./src/auth/login.js')
 
 // Immutables
 const port = process.env.PORT || 5000
@@ -56,12 +56,18 @@ app.post('/logout', (req, res, next) => {
 		req.session.destroy((err) => {
 			if (err) throw err
 		})
-		res.json({ status: 'Success: Session' })
+		res.json({ status: 'Success: Session ended' })
 	} else {
 		res.json({ status: 'Failure: No active session found' })
 	}
 })
 
-app.post('/feed', (req, res) => {})
+app.post('/feed', (req, res) => {
+	for (const camera in req.session.cameras) {
+		if (req.body.cameraId == camera.id) {
+			getFeed(res, callback)
+		}
+	}
+})
 
 app.listen(port, console.log(`Godseye Server live on port ${port}`))
