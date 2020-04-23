@@ -37,22 +37,30 @@ app.get('/*', (req, res) =>
 // POST Handlers
 app.post('/login', (req, res, next) => {
 	if (req.session.userId) {
-		res.send('Already logged in')
+		res.json({ status: 'logged in already' })
 	} else {
-		let user
-		authenticateUser(req.body.username, req.body.password, (record) => {
+		authenticateUser(req.body.email, req.body.password, (record) => {
 			if (record) {
 				req.session.userId = record.parentId
 				req.session.username = record.username
-				res.send('Logged In')
+				res.json({ status: 'login attempt successful' })
 			} else {
-				res.send('Login failed. Check credentials')
+				res.json({ status: 'login attempt failed' })
 			}
 		})
 	}
 })
 
-app.post('/logout', (req, res, next) => {})
+app.post('/logout', (req, res, next) => {
+	if (req.session.userId) {
+		req.session.destroy((err) => {
+			if (err) throw err
+		})
+		res.json({ status: 'Success: Session' })
+	} else {
+		res.json({ status: 'Failure: No active session found' })
+	}
+})
 
 app.post('/feed', (req, res) => {})
 
