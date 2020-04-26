@@ -1,5 +1,10 @@
-const bcrypt = require('bcrypt')
-
-const salt = bcrypt.genSaltSync(10)
-
-console.log(bcrypt.hashSync('kevinrulz', salt))
+console.log({
+	testcam: {
+		id: 'test001',
+		link: 'http://192.168.43.1:8080/video',
+	},
+	golfcam: {
+		id: 'test001',
+		link: 'http://wmccpinetop.axiscam.net/mjpg/video.mjpg',
+	},
+})
