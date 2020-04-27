@@ -1,9 +1,9 @@
 module.exports = {
 	godseyeDB: {
-		host: 'remotemysql.com',
+		host: 'http://95492968.ngrok.io',
 		port: 3306,
-		user: 'buGTm68Vlu',
-		password: 'OQsuRGFsMM',
-		database: 'buGTm68Vlu',
+		user: 'root',
+		password: 'kevinrulz',
+		database: 'godseye_db',
 	},
 }
