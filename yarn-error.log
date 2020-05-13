@@ -1,0 +1,60 @@
+Arguments: 
+  /home/knotuteye/.nvm/versions/node/v12.16.3/bin/node /home/knotuteye/.nvm/versions/node/v12.16.3/bin/yarn install
+
+PATH: 
+  /mnt/2CEC3CF7EC3CBD40/SDK/Android/Sdk/platform-tools:/mnt/2CEC3CF7EC3CBD40/SDK/Android/Sdk/tools:/mnt/2CEC3CF7EC3CBD40/SDK/Android/Sdk/platform-tools:/mnt/2CEC3CF7EC3CBD40/SDK/Android/Sdk/tools:/home/knotuteye/.nvm/versions/node/v12.16.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  12.16.3
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:64:26)
+
+npm manifest: 
+  {
+  	"name": "dev.backend.io",
+  	"version": "1.0.0",
+  	"description": "The NodeJS platform on which Godseye runs.",
+  	"main": "index.js",
+  	"scripts": {
+  		"start": "node index"
+  	},
+  	"repository": {
+  		"type": "git",
+  		"url": "git+ssh://git@gitlab.com/dev.io/dev.backend.io.git"
+  	},
+  	"keywords": [
+  		"Godseye",
+  		"dev.io"
+  	],
+  	"author": "Kevin Nene Otuteye",
+  	"license": "MIT",
+  	"bugs": {
+  		"url": "https://gitlab.com/dev.io/dev.backend.io/issues"
+  	},
+  	"homepage": "https://gitlab.com/dev.io/dev.backend.io#readme",
+  	"dependencies": {
+  		"bcrypt": "^4.0.1",
+  		"body-parser": "^1.19.0",
+  		"cors": "^2.8.5",
+  		"express": "^4.17.1",
+  		"express-mysql-session": "^2.1.4",
+  		"express-session": "^1.17.1",
+  		"mysql": "^2.18.1",
+  		"node-fetch": "^2.6.0",
+  		"nodemon": "^2.0.3"
+  	}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
