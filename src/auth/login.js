@@ -3,7 +3,7 @@
  */
 const mysql = require('mysql')
 const DBMeta = require('./db_cred')
-const hashSuite = require('./password-hasher')
+const hashSuite = require('./password_hasher')
 /**
  *
  * @param {String} username
@@ -19,6 +19,8 @@ function login(email, password, callback) {
 		results,
 		fields
 	) {
+		console.log(results)
+
 		if (error) throw error
 		if (!results[0]) {
 			connection.end()
