@@ -81,16 +81,14 @@ app.post('/login', (req, res, next) => {
 			if (record) {
 				req.session.userId = record.parentId
 				req.session.username = record.username
-				req.session.cameras = getUserCamera(record.parentId)
-				// [
-				// { id: 'mumsphone', link: 'http://192.168.43.1:8080/video' },
-				// {
-				// 	id: 'golfcam',
-				// 	link: 'http://wmccpinetop.axiscam.net/mjpg/video.mjpg',
-				// },
-				// ]
 
-				res.json({ status: 'login attempt successful' })
+				getUserCamera(record.parentId)
+					.then((arr) => {
+						req.session.cameras = arr
+					})
+					.then(() => {
+						res.json({ status: 'login attempt successful' })
+					})
 			} else {
 				res.json({ status: 'login attempt failed' })
 			}

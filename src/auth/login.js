@@ -19,8 +19,6 @@ function login(email, password, callback) {
 		results,
 		fields
 	) {
-		console.log(results)
-
 		if (error) throw error
 		if (!results[0]) {
 			connection.end()
