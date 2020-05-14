@@ -1,9 +1,10 @@
 module.exports = {
 	godseyeDB: {
-		host: 'http://95492968.ngrok.io',
-		port: 3306,
-		user: 'root',
-		password: 'kevinrulz',
+		host: process.env.RDS_HOSTNAME,
+		user: process.env.RDS_USERNAME,
+		password: process.env.RDS_PASSWORD,
+		port: process.env.RDS_PORT,
+		
 		database: 'godseye_db',
 	},
 }
