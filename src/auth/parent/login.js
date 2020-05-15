@@ -3,7 +3,7 @@
  */
 const mysql = require('mysql')
 const DBMeta = require('./db_cred')
-const hashSuite = require('./password_hasher')
+const hashSuite = require('../password_hasher')
 /**
  *
  * @param {String} username

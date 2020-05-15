@@ -3,9 +3,5 @@ node_modules/
 .elasticbeanstalk/
 
 
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
 
 myapp.zip

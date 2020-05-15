@@ -1,3 +1,4 @@
+// IMPORTS
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -5,10 +6,10 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const MySQLStore = require('express-mysql-session')(session)
 
-//Server Meta
+// SERVER METADATA
 const DBMeta = require('./src/auth/db_cred.js')
 
-//Functions
+// IMPORTED FUNCTIONS
 const authenticateUser = require('./src/auth/login.js')
 const piper = require('./src/pipe/pied-piper.js')
 const getUserCamera = require('./src/camera_ops/getUserCameras.js')
@@ -17,7 +18,7 @@ const getUserCamera = require('./src/camera_ops/getUserCameras.js')
 const port = process.env.PORT || 5000
 const sessionStore = new MySQLStore(DBMeta.godseyeDB)
 
-// Middleware
+// MIDDLEWARE
 app.use(
 	cors({
 		credentials: true,
@@ -40,7 +41,7 @@ app.use(
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// GET Handler
+// GET HANDLERS
 app.get('/feed/:cameraId', (req, res, next) => {
 	if (!req.session.userId) {
 		res.json({ status: 'failure: please login first' })
@@ -60,10 +61,12 @@ app.get('/*', (req, res) =>
 	})
 )
 
-// POST Handlers
+// POST HANDLERS
+
+// USER DATA ENDPOINTS
 app.post('/cameras', (req, res, next) => {
 	if (!req.session.userId) {
-		res.json({ status: 'failure: please login first' })
+		res.json({ status: 'failure: access denied to this resource' })
 	} else {
 		let userCameraObject = []
 		req.session.cameras.forEach((obj) =>
@@ -73,6 +76,7 @@ app.post('/cameras', (req, res, next) => {
 	}
 })
 
+// AUTHENTICATION ENDPOINTS
 app.post('/login', (req, res, next) => {
 	if (req.session.userId) {
 		res.json({ status: 'logged in already' })
@@ -96,6 +100,8 @@ app.post('/login', (req, res, next) => {
 	}
 })
 
+app.post('/signup', (req, res, next) => {})
+
 app.post('/logout', (req, res, next) => {
 	if (req.session.userId) {
 		req.session.destroy((err) => {
@@ -105,6 +111,10 @@ app.post('/logout', (req, res, next) => {
 	} else {
 		res.json({ status: 'failure: No active session found' })
 	}
+})
+
+app.post('/*', (req, res, next) => {
+	res.json({ error: 'Endpoint does not exist' })
 })
 
 app.listen(port, console.log(`Godseye Server live on port ${port}`))
