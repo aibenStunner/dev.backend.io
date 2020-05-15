@@ -59,7 +59,7 @@ app.get('/feed/:cameraId', (req, res, next) => {
 })
 
 app.get('/*', (req, res) =>
-	res.sendFile('/views/index.html', { root: __dirname }, (err) => {
+	res.sendFile('/public/index.html', { root: __dirname }, (err) => {
 		if (err) console.error(err)
 	})
 )
