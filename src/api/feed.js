@@ -1,9 +1,9 @@
 const fetch = require('node-fetch')
+
 /**
  *
- * @param {String} cameraLink The tunneled url to the camera
- * @param {String} password The password to access the feed
- * @param {Response} res
+ * @param {String} cameraLink The url to the raw stream
+ * @param {Response} res The object to pipe the response through
  */
 function getFeed(cameraLink, res) {
 	fetch(cameraLink)
@@ -11,6 +11,7 @@ function getFeed(cameraLink, res) {
 			res.setHeader('content-type', response.headers.get('content-type'))
 			response.body.pipe(res)
 		})
-		.catch((reason) => console.log(reason))
+		.catch((err) => console.log(err))
 }
+
 module.exports = { getFeed }

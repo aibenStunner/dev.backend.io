@@ -17,13 +17,16 @@ function executeQuery(query) {
 				reject(error)
 			} else if (!results[0]) {
 				connection.end()
-				resolve('Query Executed: No rows returned')
+				resolve(undefined)
 			} else {
 				connection.end()
 				resolve(results)
 			}
 		})
-	}).catch((err) => console.error('Query Failed'))
+	}).catch((err) => {
+		console.error('Query Failed')
+		console.error(err)
+	})
 }
 
-module.exports = executeQuery
+module.exports = { executeQuery }

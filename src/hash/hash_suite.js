@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const saltRounds = 5
+const saltRounds = 10
 
 /**
  *
@@ -24,12 +24,11 @@ function hashPassword(password) {
 }
 
 function comparePassword(password, hash) {
-	return new Promise((resolve, reject) => {
-		bcrypt.compare(password, hash, (err, isMatch) => {
-			if (err) reject(err)
-			else resolve(isMatch)
+	return bcrypt
+		.compare(password, hash)
+		.catch((err) => {
+			console.log(err)
 		})
-	})
 }
 
 module.exports = { hashPassword, comparePassword }

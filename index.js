@@ -7,16 +7,17 @@ const bodyParser = require('body-parser')
 const MySQLStore = require('express-mysql-session')(session)
 
 // SERVER METADATA
-const DBMeta = require('./src/auth/db_cred.js')
+const DBMeta = require('./src/db/credentials.json')
 
 // IMPORTED FUNCTIONS
-const authenticateUser = require('./src/auth/login.js')
-const piper = require('./src/pipe/pied-piper.js')
-const getUserCamera = require('./src/camera_ops/getUserCameras.js')
+// const authenticateUser = require('./src/auth/login.js')
+const parentAuth = require('./src/auth/parent_auth')
+// const piper = require('./src/pipe/pied-piper.js')
+// const getUserCamera = require('./src/camera_ops/getUserCameras.js')
 
 // Immutables
 const port = process.env.PORT || 5000
-const sessionStore = new MySQLStore(DBMeta.godseyeDB)
+const sessionStore = new MySQLStore(DBMeta.RDS)
 
 // MIDDLEWARE
 app.use(
@@ -44,14 +45,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // GET HANDLERS
 app.get('/feed/:cameraId', (req, res, next) => {
 	if (!req.session.userId) {
-		res.json({ status: 'failure: please login first' })
+		res.json({ failure: { reason: 'please login first' } })
 	} else {
 		let selectedCamera = req.session.cameras.filter((obj) =>
 			obj.id == req.params.cameraId ? obj : ''
 		)
 		selectedCamera[0]
 			? piper.getFeed(selectedCamera[0].link, res)
-			: res.json({ status: 'failure: access denied to this resource' })
+			: res.json({
+					failure: { reason: 'access denied to this resource' },
+			  })
 	}
 })
 
@@ -66,7 +69,7 @@ app.get('/*', (req, res) =>
 // USER DATA ENDPOINTS
 app.post('/cameras', (req, res, next) => {
 	if (!req.session.userId) {
-		res.json({ status: 'failure: access denied to this resource' })
+		res.json({ status: { failure: 'access denied to this resource' } })
 	} else {
 		let userCameraObject = []
 		req.session.cameras.forEach((obj) =>
@@ -77,44 +80,65 @@ app.post('/cameras', (req, res, next) => {
 })
 
 // AUTHENTICATION ENDPOINTS
-app.post('/login', (req, res, next) => {
-	if (req.session.userId) {
-		res.json({ status: 'logged in already' })
-	} else {
-		authenticateUser(req.body.email, req.body.password, (record) => {
-			if (record) {
-				req.session.userId = record.parentId
-				req.session.username = record.username
 
-				getUserCamera(record.parentId)
-					.then((arr) => {
-						req.session.cameras = arr
+app.post('/parents/login', (req, res, next) => {
+	if (req.session.user) {
+		if (req.session.user.parentId) {
+			res.json({ status: { illegal: 'Parent logged in already' } })
+		}
+	} else {
+		parentAuth
+			.login(req.body.email, req.body.password)
+			.then((loginStatus) => {
+				// SESSION BEGIN
+				if (loginStatus.status.success) {
+					delete loginStatus.user.password
+					req.session.user = loginStatus.user
+				}
+				res.json(loginStatus)
+			})
+			.catch((err) => {
+				if (err.failure) {
+					res.json(err)
+				} else {
+					console.log(err)
+					res.json({
+						status: {
+							failure: 'An internal server error occured.',
+						},
 					})
-					.then(() => {
-						res.json({ status: 'login attempt successful' })
-					})
-			} else {
-				res.json({ status: 'login attempt failed' })
-			}
-		})
+				}
+			})
 	}
 })
 
-app.post('/signup', (req, res, next) => {})
-
-app.post('/logout', (req, res, next) => {
-	if (req.session.userId) {
+app.post('/parents/logout', (req, res, next) => {
+	if (req.session.user) {
 		req.session.destroy((err) => {
 			if (err) throw err
 		})
-		res.json({ status: 'success: Session ended' })
+		res.json({ status: { success: 'Session ended' } })
 	} else {
-		res.json({ status: 'failure: No active session found' })
+		res.json({ status: { failure: 'No active session found' } })
 	}
 })
 
+app.post('/parents/signup', (req, res, next) => {
+	parentAuth
+		.signup(
+			req.body.firstName,
+			req.body.lastName,
+			req.body.password,
+			req.body.nChildren,
+			req.body.email
+		)
+		.then((result) => res.json(result))
+		.catch((err) => res.json(err))
+})
+
+// OTHER POST REQUESTS
 app.post('/*', (req, res, next) => {
-	res.json({ error: 'Endpoint does not exist' })
+	res.sendStatus(204)
 })
 
 app.listen(port, console.log(`Godseye Server live on port ${port}`))
