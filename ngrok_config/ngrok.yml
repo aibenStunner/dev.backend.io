@@ -1,0 +1,8 @@
+authtoken: 1alR3FBvj2docBOajaox0HkbRP2_6S9RbsrwYrspMYwGhsY7A
+tunnels:
+  devio-cam0:
+    proto: http
+    addr: 8081
+  devio-cam1:
+    proto: http
+    addr: 8082
