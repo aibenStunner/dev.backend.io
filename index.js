@@ -138,7 +138,7 @@ app.post('/parents/signup', (req, res, next) => {
 
 // OTHER POST REQUESTS
 app.post('/*', (req, res, next) => {
-	res.sendStatus(204)
+	res.sendStatus(404)
 })
 
 app.listen(port, console.log(`Godseye Server live on port ${port}`))
