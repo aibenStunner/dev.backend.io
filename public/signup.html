@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SignUp</title>
+
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/tablet.css">
+  <link rel="stylesheet" href="css/desktop.css">
+</head>
+
+<body id="signupBackground">
+
+  <!--SIDE NAV FOR MOBILE-->
+  <header id="mobileMenu" class="navBar"> <!-- navigation bar block -->
+
+    <img src="img/ball.png"  class="logo" alt="logo" width="50" height="40">
+
+    <div id="mySidenav" class="sideNav">
+      <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <li id="menuIcon">
+      <span style="font-size: 20px; cursor: pointer"onclick="openNav()">&#9776; MENU </span>
+    </li>
+
+  </header> <!--end nav block -->
+  <!-- #SIDE NAV FOR MOBILE-->
+
+
+  <header id="bigMenu" class="navBar"> <!-- navigation bar block -->
+    <ul id>
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="signup.html">Sign Up</a>
+      </li>
+      <li>
+        <a href="about.html">About</a>
+      </li>
+      <li>
+        <a href="support.html">Support</a>
+      </li>
+      <li id="logo" style="float: right">
+        <img src="img/ball.png" alt="logo" width="50" height="50">
+      </li>
+    </ul>
+  </header> <!--end nav block -->
+  <br><br><br>
+
+  <h3 id="signupHead"> Sign Up</h3>
+
+  <div id="signupCol">
+
+    <div class="signupContainer"> <!--  Sign Up Form -->
+
+      <form action="#" id="signup">
+        <fieldset>
+          <label for="fname">First Name*</label><br>
+          <input type="text" id="fname" required>
+          <br>
+
+          <label for="lname">Last Name*</label><br>
+          <input type="text" id="lname"  required>
+          <br>
+
+          <label for="phone">Phone*</label><br>
+          <input type="tel" id="phone" required>
+          <br>
+
+          <label for="email">Email*</label><br>
+          <input type="email" id="email" required>
+          <br>
+
+          <label for="city">City*</label><br>
+          <select name="City" id="city" form="signup">
+            <option value="Accra">Accra</option>
+            <option value="Kumasi">Kumasi</option>
+            <option value="Koforidua">Koforidua</option>
+            <option value="Sunyani">Sunyani</option>
+            <option value="Takoradi">Takoradi</option>
+          </select>
+          <br>
+
+          <label for="ward">Ward&apos;s School*</label><br>
+          <select name="School" id="ward" form="signup">
+            <option value="Best Brains">Best Brains International School</option>
+            <option value="High Class">High Class Academy</option>
+            <option value="All Ages">All Ages Daycare Center</option>
+            <option value="Proper Care">Proper Care Montessori</option>
+            <option value="ABC">ABC Daycare Center</option>
+          </select>
+          <br>
+
+          <label for="uname">Username*</label><br>
+          <input type="text" id="uname" required>
+          <br>
+
+          <label for="psw">Password*</label><br>
+          <input type="password" id="psw" required>
+          <br>
+
+          <label for="rpsw">Repeat Password*</label><br>
+          <input type="password" id="rpsw" required>
+          <br>
+
+          <input type="checkbox" id="agree" name="Agreement" required>
+          <label for="agree">I Agree to the terms of use and customer terms.</label>
+          <br>
+
+          <button type="submit" value="SIGN UP">SIGN UP</button>
+        </fieldset>
+      </form>
+    </div> <!-- end Sign Up Form -->
+
+  </div> <!-- #page-container -->
+
+  <div class="footerContent"> <!-- footer-left -->
+    <h3 id="godseyeSec">GodsEye <span>Security</span></h3>
+
+    <p class="footerLinks">
+      <a href="index.html">Home</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+      <a href="account-management.html">Account Management</a>
+    </p>
+    <p class="footerCompanyName">godseye &copy; 2020</p>
+
+  </div> <!-- end footer left  -->
+
+
+  <script>
+    /* Set the width of the side navigation to 250px */
+
+    function openNav() {
+      document.getElementById("mySidenav") .style.width="250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav") .style.width = "0";
+    }
+  </script>
+
+</body>
+</html>

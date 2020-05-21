@@ -1,11 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>dev.io</title>
+		<meta charset="utf-8" />
+		<title>Homepage</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="css/normalize.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/tablet.css" />
+		<link rel="stylesheet" href="css/desktop.css" />
 	</head>
-	<body>
-        <h1>You didn't see anything</h1>
-    </body>
+
+	<body id="loginBackground">
+		<!--SIDE NAV FOR MOBILE-->
+		<header id="mobileMenu" class="navBar">
+			<!-- navigation bar block -->
+
+			<img
+				src="img/ball.png"
+				class="logo"
+				alt="logo"
+				width="50"
+				height="40"
+			/>
+
+			<div id="mySidenav" class="sideNav">
+				<a
+					href="javascript:void(0)"
+					class="closeBtn"
+					onclick="closeNav()"
+					>&times;</a
+				>
+				<a href="index.html">Home</a>
+				<a href="signup.html">Sign Up</a>
+				<a href="support.html">Support</a>
+				<a href="about.html">About</a>
+			</div>
+
+			<li id="menuIcon">
+				<span
+					style="font-size: 20px; cursor: pointer;"
+					onclick="openNav()"
+					>&#9776; MENU
+				</span>
+			</li>
+		</header>
+		<!--end nav block -->
+		<!-- #SIDE NAV FOR MOBILE-->
+
+		<header id="bigMenu" class="navBar">
+			<!-- navigation bar block -->
+			<ul id>
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="signup.html">Sign Up</a>
+				</li>
+				<li>
+					<a href="about.html">About</a>
+				</li>
+				<li>
+					<a href="support.html">Support</a>
+				</li>
+				<li class="logo" style="float: right;">
+					<img src="img/ball.png" alt="logo" width="50" height="50" />
+				</li>
+			</ul>
+		</header>
+		<!--end nav block -->
+
+		<br /><br /><br />
+
+		<div class="pageContainer">
+			<div class="loginContainer1">
+				<!--LOGIN -->
+				<form action="">
+					<fieldset>
+						<legend class="loginHead">LOG IN</legend>
+
+						<label for="uname1">Username*</label><br />
+						<input
+							type="text"
+							id="uname1"
+							placeholder="Your Username ..."
+							required
+						/>
+						<br />
+
+						<label for="psw1">Password*</label><br />
+						<input
+							type="password"
+							id="psw1"
+							placeholder="Your Password ..."
+							required
+						/>
+						<br />
+
+						<input
+							type="checkbox"
+							checked="checked"
+							id="remember_me1"
+						/>
+						<label for="remember_me1">Remember me</label>
+						<br />
+
+						<button type="submit" value="LOG IN" id="login_button1">
+							Login
+						</button>
+
+						<a href="forgot-password.html" class="forgot"
+							>Forgot Password?</a
+						>
+						<br />
+					</fieldset>
+				</form>
+			</div>
+			<!-- END LOGIN -->
+
+			<!-- this second login form is just to take up space so we hide it... -->
+			<!-- and when it comes to smaller screen like that of mobile and tablet, -->
+			<!-- we get rid of it completely -->
+
+			<div class="loginContainer2">
+				<!--LOGIN -->
+				<form action="">
+					<fieldset>
+						<legend class="loginHead">LOG IN</legend>
+
+						<label for="uname2">Username*</label><br />
+						<input
+							type="text"
+							id="uname2"
+							placeholder="Your Username ..."
+							required
+						/>
+						<br />
+
+						<label for="psw2">Password*</label><br />
+						<input
+							type="password"
+							id="psw2"
+							placeholder="Your Password ..."
+							required
+						/>
+						<br />
+
+						<input
+							type="checkbox"
+							checked="checked"
+							id="remember_me2"
+						/>
+						<label for="remember_me2">Remember me</label>
+						<br />
+
+						<button type="submit" value="LOG IN" id="login_button2">
+							Login
+						</button>
+
+						<a href="forgot-password.html">Forgot Password</a>
+					</fieldset>
+				</form>
+			</div>
+			<!-- END LOGIN -->
+
+			<div id="loginDownAndSign">
+				<!-- loginDownAndSign -->
+
+				<hr id="loginRule" />
+
+				<div class="loginCol">
+					<!-- signup option -->
+					<h2>Don't Have An Account?</h2>
+					<p>
+						Create a free GodsEye account to watch your child or
+						guardian flourish with True-To-Life video.
+					</p>
+					<button type="submit" value="SIGN UP">SIGN UP</button>
+				</div>
+				<!-- end signup option -->
+
+				<div class="loginCol" id="loginCol2">
+					<h2>Download our free app for iOS or Android</h2>
+					<p>
+						Don't get stuck at your desk stream secure, live video
+						of your child from your phone or tablet.
+					</p>
+
+					<div id="downloadButtons">
+						<a href="#" id="appStore"
+							><img
+								src="img/app_store_svg.svg"
+								alt="iOS App"
+								width="120"
+								height="40"
+						/></a>
+						<a href="#" id="playStore"
+							><img
+								src="img/play_store_svg.svg"
+								alt="Android App"
+								width="120"
+								height="40"
+						/></a>
+					</div>
+				</div>
+			</div>
+			<!-- end loginDownAndSign -->
+		</div>
+		<!-- #page-container -->
+
+		<div class="footerContent">
+			<!-- footer-left -->
+			<h3 id="godseyeSec">GodsEye <span>Security</span></h3>
+
+			<p class="footerLinks">
+				<a href="index.html">Home</a>
+				<a href="signup.html">Sign Up</a>
+				<a href="about.html">About</a>
+				<a href="support.html">Support</a>
+				<a href="account-management.html">Account Management</a>
+			</p>
+			<p class="footerCompanyName">godseye &copy; 2020</p>
+		</div>
+		<!-- end footer left  -->
+
+		<script>
+			/* Set the width of the side navigation to 250px */
+
+			function openNav() {
+				document.getElementById('mySidenav').style.width = '250px'
+			}
+
+			function closeNav() {
+				document.getElementById('mySidenav').style.width = '0'
+			}
+		</script>
+	</body>
 </html>

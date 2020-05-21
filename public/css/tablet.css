@@ -1,0 +1,217 @@
+/*QUERY FOR TABLET SIZE SCREEN*/
+@media screen and (min-width: 600px){
+
+  /*HEADER AND NAVIGATION BAR */
+
+  #mobileMenu {
+    display: none;
+  }
+
+  li {
+    padding: 0;
+  }
+
+  li img {
+    float: right;
+  }
+
+  .navBar a {
+    font-size: 20px;
+  }
+
+
+
+  /*HOME PAGE*/
+
+  .loginContainer1 {
+    width: 66%;
+    margin: auto;
+  }
+
+  #loginBackground {
+    background-position: 50% 40%;
+    background-size: 500px;
+  }
+
+  .h3Head {
+    font-size: 23px;
+  }
+
+
+
+  /*SIGN UP PAGE*/
+
+  #signupCol {
+    width: 450px;
+    float: left;
+    margin: auto auto auto 75px;
+  }
+
+  #signupBackground {
+    background-position: 85% 40%;
+  }
+
+
+
+  /*ABOUT PAGE*/
+
+  #aboutMsg {
+    width: 300px;
+    display: inline-block;
+    font-size: 30px;
+    text-align: center;
+    float: left;
+  }
+
+  #aboutImg {
+    visibility: hidden;
+    width: 70px;
+  }
+
+  #aboutBackImg {
+    background-image: url("sign_up_background.svg");
+    background-size: 450px;
+    background-position: 80% 15%;
+    background-repeat: no-repeat;
+  }
+
+  .valuesList {
+    width: 32%;
+    display: inline-grid;
+  }
+
+  .coreImg {
+    font-size: 25px;
+  }
+
+  .coreParagraph, .msnParagraph {
+    font-size: 20px;
+  }
+
+  #msn {
+    width: 65%;
+  }
+
+  .msnHead {
+    font-size: 25px;
+  }
+
+
+
+  /*SUPPORT PAGE*/
+
+  #contactBox p, #additionalInfo p{
+    font-size: 20px;
+  }
+
+  #personInfo {
+    width: 47%;
+    float: left;
+  }
+
+  #schInfo {
+    width: 47%;
+    float: right;
+    display: inline-block;
+  }
+
+  #additionalInfo {
+    margin-top: 400px;
+  }
+
+  #additionalInfo h3 {
+    text-align: center;
+  }
+
+
+
+  /*FOOTER*/
+  .footerContent a {
+    display: inline;
+    padding: 10px;
+  }
+
+  /* Change the link color to #111 (black) on hover */
+  .footerContent a:hover {
+    background-color: #999999;
+  }
+
+  /* Add a gray right border to all list items, except the last item (last-child) */
+  .footerContent a {
+    border-right: 1px solid #bbb;
+  }
+
+  .footerContent a:last-child {
+    border-right: none;
+  }
+
+                  /*   ACCOUNT MANAGEMENT  */
+  .accCol {
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .accHead {
+    font-size: 23px;
+  }
+
+  .accParagraph {
+    font-size: 19px;
+  }
+
+  /******************* FORGOT PAGES *********************/
+
+  #forgotPassContainer label, #forgotUnameContainer label{
+    margin-left: 33px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*STYLE FOR NAVIGATION BAR ON DESKTOP*/
+
+/*HOME PAGE*/
+@media screen and (width: 768px){
+
+  .loginContainer1 {
+    margin-left: 10%;
+  }
+
+  #loginRule {
+    display: none;
+  }
+
+  #loginDownAndSign {
+    margin-top: 310px;
+    margin-left: 13%;
+
+  }
+
+  #loginDownAndSign p {
+    font-size: 23px;
+  }
+
+  .loginCol {
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .navBar a {
+    font-size: 20px;
+  }
+
+}
+
+
+
+

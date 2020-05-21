@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Support</title>
+
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/tablet.css">
+  <link rel="stylesheet" href="css/desktop.css">
+</head>
+<body>
+
+  <!--SIDE NAV FOR MOBILE-->
+  <header id="mobileMenu" class="navBar"> <!-- navigation bar block -->
+
+    <img src="img/ball.png"  class="logo" alt="logo" width="50" height="40">
+
+    <div id="mySidenav" class="sideNav">
+      <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <li id="menuIcon">
+      <span style="font-size: 20px; cursor: pointer"onclick="openNav()">&#9776; MENU </span>
+    </li>
+
+  </header> <!--end nav block -->
+  <!-- #SIDE NAV FOR MOBILE-->
+
+
+  <header id="bigMenu" class="navBar"> <!-- navigation bar block -->
+    <ul id>
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="signup.html">Sign Up</a>
+      </li>
+      <li>
+        <a href="about.html">About</a>
+      </li>
+      <li>
+        <a href="support.html">Support</a>
+      </li>
+      <li class="logo" style="float: right">
+        <img src="img/ball.png" alt="logo" width="50" height="50">
+      </li>
+    </ul>
+  </header> <!--end nav block -->
+  <br><br><br>
+
+  <div class="pageContainer">
+
+    <div id="contactBox"> <!-- Contact Info -->
+      <p>We aim to please. How can we help?</p>
+      <section class="contactInfo">
+        <p><b>Phone</b>: 030-233-2333</p>
+        <p><b>Email</b>: support@godseye.com</p>
+        <p><b>Hours</b>: Monday through Friday, 6am - 5pm GMT</p>
+      </section>
+      <p>Or complete the form below and we'll respond within 24 business hours.</p>
+    </div> <!-- end Contact Info -->
+
+    <hr>
+
+    <form action="#" id="support-form"> <!-- support form -->
+
+        <div  id="personInfo">
+          <h3 class="h3Head">Your Contact Information</h3>
+
+          <label for="cname">Name*</label><br>
+          <input type="text" id="cname" required>
+          <br>
+
+          <label for="cphone">Phone*</label><br>
+          <input type="tel" id="cphone" required>
+          <br>
+
+          <label for="email">Email*</label><br>
+          <input type="email" id="email" required>
+          <br>
+
+          <label for="uname">Username (optional)</label><br>
+          <input type="text" id="uname">
+          <br>
+        </div>
+
+        <div  id="schInfo">
+          <h3 class="h3Head">School Contact Information</h3>
+
+          <label for="sname">School Name*</label><br>
+          <input type="text" id="sname" required>
+
+          <label for="address">Address</label><br>
+          <input type="text" id="address">
+          <br>
+
+          <label for="scity">City*</label><br>
+          <select name="City" id="scity" form="support-form">
+            <option value="Accra">Accra</option>
+            <option value="Kumasi">Kumasi</option>
+            <option value="Koforidua">Koforidua</option>
+            <option value="Sunyani">Sunyani</option>
+            <option value="Takoradi">Takoradi</option>
+          </select>
+          <br>
+
+          <label for="sreg">Region*</label><br>
+          <select name="Region" id="sreg" form="support-form">
+            <option value="Accra">Greater Accra</option>
+            <option value="Kumasi">Ashanti</option>
+            <option value="Koforidua">Eastern</option>
+            <option value="Sunyani">Brong Ahafo</option>
+            <option value="Takoradi">Western</option>
+          </select>
+        </div>
+      <br>
+
+        <div id="additionalInfo">
+          <h3 class="h3Head">Additional Information</h3>
+          <p>Please provide comments and questions here.</p>
+          <textarea name="Message" id="additional-info" cols="50" rows="10"></textarea>
+          <br>
+
+          <button type="submit" value="SIGN UP">SUBMIT</button>
+        </div>
+    </form> <!-- end support form -->
+
+  </div> <!-- #page-container -->
+
+  <div class="footerContent"> <!-- footer-left -->
+    <h3 id="godseyeSec">GodsEye <span>Security</span></h3>
+
+    <p class="footerLinks">
+      <a href="index.html">Home</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+      <a href="account-management.html">Account Management</a>
+    </p>
+    <p class="footerCompanyName">godseye &copy; 2020</p>
+
+  </div> <!-- end footer left  -->
+
+
+  <script>
+    /* Set the width of the side navigation to 250px */
+
+    function openNav() {
+      document.getElementById("mySidenav") .style.width="250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav") .style.width = "0";
+    }
+  </script>
+
+</body>
+</html>

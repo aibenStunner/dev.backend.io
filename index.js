@@ -42,6 +42,8 @@ app.use(
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.use('/', express.static('public'))
+
 // GET HANDLERS
 app.get('/feed/:cameraId', (req, res, next) => {
 	if (!req.session.userId) {
@@ -58,11 +60,11 @@ app.get('/feed/:cameraId', (req, res, next) => {
 	}
 })
 
-app.get('/*', (req, res) =>
-	res.sendFile('/public/index.html', { root: __dirname }, (err) => {
-		if (err) console.error(err)
-	})
-)
+// app.get('/*', (req, res) =>
+// 	res.sendFile('/public/index.html', { root: __dirname }, (err) => {
+// 		if (err) console.error(err)
+// 	})
+// )
 
 // POST HANDLERS
 

@@ -1,0 +1,580 @@
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+                              /*GENERAL STYLES*/
+
+.pageContainer {
+  width: 85%;
+  margin: 20px auto auto;
+}
+
+                         /*SIDE MENU ON MOBILE STYLE*/
+@media screen and (max-width: 640px){
+  #bigMenu {
+    display: none;
+  }
+}
+
+.sideNav {
+  height: 35%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.8);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 40px;
+}
+
+.sideNav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s
+}
+
+.sideNav a:hover, .offcanvas a:focus {
+  color: #f1f1f1;
+}
+
+.sideNav .closeBtn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 30px;
+  margin-left: 50px;
+}
+
+li {
+  float: left;
+  list-style-type: none;
+  padding: 10px 0 0 20px;
+}
+
+/*adding this style made my buttons wider*/
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.h3Head {
+  text-align: center;
+  font-size: 23px;
+}
+
+.navBar{
+  position: fixed;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #333;
+  color: #f1f1f1;
+  overflow: hidden;
+  z-index: 99;
+}
+
+.logo{
+  float: right;
+  padding-right: 10px;
+  position: center;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style-type: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #0ff;
+  color: black;
+  font-weight: bolder;
+}
+
+button {
+  display: block;
+  background-color: darkslateblue;
+  color: white;
+  padding: 12px 20px;
+  margin: 10px auto;
+  border: none;
+  cursor: pointer;
+  width: 10em;
+  border-radius: 46px;
+}
+
+#backToAccountButton {
+  background-color: darkcyan;
+  width: fit-content;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+input[type=text],input[type=password], input[type=email], input[type=tel], select {
+  width: 100%;
+  padding: 5px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #555;
+
+  /*this changes the box model used by the input and select elements*/
+  /*so that they all behave the same way in different browsers...*/
+
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+label {
+  font-size: 18px;
+}
+
+fieldset {
+ border: none;
+  margin: 0;
+}
+
+
+                              /*FOOTER STYLING*/
+
+.footerContent{
+  display: inline-block;
+  vertical-align: bottom;
+
+  background-color: #333;
+  /*box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);*/
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  right: 0;
+  font: bold 16px sans-serif;
+  padding: 1rem;
+}
+
+#godseyeSec {
+  font: normal 25px 'Cookie', cursive;
+  margin: 0 auto;
+}
+
+.footerContent h3 {
+  color: #00ffff;
+}
+
+.footerContent h3 span {
+  color: #5383d3;
+}
+
+.footerContent. footerLinks {
+  margin-top: 20px;
+  padding: 0;
+}
+
+.footerLinks a {
+  display: block;
+  text-decoration: none;
+  color: #f1f1f1;
+  padding: 5px;
+}
+
+.footerContent.footerCompanyName {
+  color: #8f9296;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+@media (max-width: 880px) {
+
+  .footerContainer {
+    font: bold 14px sans-serif;
+  }
+
+  .footerContainer .footerContent {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+}
+
+
+                      /*INDEX PAGE STYLE*/
+
+.loginContainer1{
+  width: 100%;
+  margin: 0 auto;
+  align-content: center;
+  float: left;
+}
+
+/*this second login form is just to take up space so we hide it...*/
+/*and when it comes to smaller screen like that of mobile and tablet,*/
+/*we get rid of it completely*/
+.loginContainer2{
+  width: 100%;
+  margin: 0 auto;
+  align-content: normal;
+  visibility: hidden;
+}
+
+/*this is to style the legend on top of the forms*/
+.loginHead, #signupHead {
+  font-weight: bolder;
+  font-size: 20px;
+  text-align: center;
+}
+
+.forgot {
+  font-size: 18px;
+  float: right;
+}
+
+/*this is a container for the section for signup and download*/
+.loginCol {
+  width: 100%;
+  margin: 0 auto;
+  float: left;
+}
+
+.loginCol p {
+  text-align: center;
+  font-size: 18px;
+}
+
+.loginCol h2 {
+  text-align: center;
+}
+
+#loginDownAndSign {
+  float: left;
+}
+#downloadButtons{
+  /*border: 1px solid red;*/
+  /*padding: 10px;*/
+}
+#appStore {
+  float: left;
+  /*border: 1px solid green;*/
+  /*margin-left: 40px;*/
+}
+
+#playStore {
+  float: right;
+  /*border: 1px solid green;*/
+  /*margin-left: 40px;*/
+}
+
+#loginBackground {
+  background-image: url("login_background.svg");
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+  background-size: 500px;
+  overflow-x: hidden;
+}
+
+/*this is supposed to create some space between the background*/
+/*image and the next content that follows*/
+#loginRule {
+  margin-top: 50px;
+}
+
+                            /*SIGNUP PAGE STYLE*/
+
+#signupCol {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.signupContainer{
+  width: 100%;
+  margin: 0 auto;
+  align-content: center;
+  float: left;
+}
+
+#signupBackground {
+  background-image: url("sign_up_background.svg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 600px;
+}
+
+
+                          /*SUPPORT PAGE SYTLE*/
+
+#contactBox {
+  text-align: center;
+}
+
+#contactBox p, #additionalInfo p{
+  font-size: 18px;
+}
+
+.contactInfo {
+  text-align: justify-all;
+  margin: 2px;
+}
+
+#personInfo {
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+#schInfo {
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+#additionalInfo textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+                        /*ABOUT PAGE STYLE*/
+
+#aboutMsg {
+  display: inline-block;
+  font-size: 20px;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#aboutMsg p {
+  text-align: justify-all;
+}
+
+#aboutImg img {
+  max-width: 100%;
+}
+
+#aboutBackImg {
+}
+
+.valuesList {
+  width: 100%;
+  display: inline-grid;
+  margin: 0 auto;
+  align-content: center;
+}
+
+.valuesList figure {
+  align-self: center;
+  margin: 0;
+}
+
+.coreImg {
+  width: 100%;
+  text-align: center;
+  font-size: 23px;
+}
+
+.coreParagraph {
+  font-size: 18px;
+  text-align: center;
+}
+
+#msn {
+  width: 100%;
+  margin: 0 auto;
+  overflow: no-display;
+}
+
+#msn img {
+  float: left;
+}
+
+.msnHead {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 21px;
+}
+
+.msnParagraph {
+  font-size: 17px;
+  overflow: hidden;
+  text-align: left;
+}
+
+                            /*ACCOUNT MANAGEMENT PAGE STYLE*/
+
+.accCol {
+  width: 100%;
+}
+
+.accBlock {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.accBlock img {
+  float: left;
+}
+
+.accHead {
+  font-size: 21px;
+  display: block;
+  margin-bottom: 7px;
+}
+
+.accParagraph {
+  font-size: 17px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.accBlock a {
+  color: black;
+  text-decoration: none;
+}
+
+
+                      /*MONITOR PAGE STYLES*/
+
+.studyA {
+  /*border: 1px solid red;*/
+}
+.studyA h3{
+  text-align: center;
+}
+.studyA p{
+  color: #717171;
+}
+
+@media screen and (min-width: 375px){
+  .studyA video {
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .studyA video{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 300px;
+  }
+  .studyA p{
+    margin-left: 70px;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  #pageContainerMonitorScreen{
+    width: 95%;
+  }
+  .studyA{
+    width: 50%;
+  }
+  .studyA video{
+    width: 90%;
+  }
+
+  .studyA p{
+    margin-left: 30px;
+    font-size: 1.2em;
+  }
+
+  #studyA{
+    float: left;
+  }
+
+  #studyB{
+    float: right;
+  }
+
+  #studyC{
+    float: left;
+  }
+
+  #studyD{
+    float: right;
+  }
+
+
+  .clearfix{
+    clear: both;
+  }
+}
+
+
+                        /*FORGOT PASSWORD PAGE STYLES*/
+
+#forgotPassHead, #forgotUnameHead {
+  padding: 23px 20px;
+  text-align: center;
+  background-color: lightcyan;
+  color: darkslateblue;
+  font-size: 35px;
+  font-weight: normal;
+}
+
+#forgotPassContainer p, #forgotUnameContainer p {
+  font-size: 20px;
+  text-align: center;
+}
+#forgotPassContainer label, #forgotUnameContainer label{
+  display: block;
+  margin-left: 20px;
+}
+#forgotPassContainer input, #forgotUnameContainer input {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+#forgotPassContainer a, #forgotUnameContainer a {
+  text-decoration: none;
+}
+
+/*i want this to always fit to the bottom of the screen of the page*/
+#bottomPage{
+  height: 80px;
+  background-color: cadetblue;
+  margin-top: 35px;
+}
+
+
+
+                                    /*FORGOT USERNAME PAGE STYLES*/
+
+#forgotUnameContainer {
+
+}

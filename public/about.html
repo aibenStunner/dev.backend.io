@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About</title>
+
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/tablet.css">
+  <link rel="stylesheet" href="css/desktop.css">
+</head>
+
+<body id="aboutBackImg">
+
+  <!--SIDE NAV FOR MOBILE-->
+  <header id="mobileMenu" class="navBar"> <!-- navigation bar block -->
+
+    <img src="img/ball.png"  class="logo" alt="logo" width="50" height="50">
+
+    <div id="mySidenav" class="sideNav">
+      <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <li id="menuIcon">
+      <span style="font-size: 20px; cursor: pointer"onclick="openNav()">&#9776; MENU </span>
+    </li>
+
+  </header> <!--end nav block -->
+  <!-- #SIDE NAV FOR MOBILE-->
+
+
+  <header id="bigMenu" class="navBar"> <!-- navigation bar block -->
+    <ul id>
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="signup.html">Sign Up</a>
+      </li>
+      <li>
+        <a href="about.html">About</a>
+      </li>
+      <li>
+        <a href="support.html">Support</a>
+      </li>
+      <li class="logo" style="float: right">
+        <img src="img/ball.png" alt="logo" width="50" height="40">
+      </li>
+    </ul>
+  </header> <!--end nav block -->
+  <br><br><br>
+
+  <div class="pageContainer">
+
+    <div id="aboutMsg"> <!-- Welcome Message -->
+      <h2>Nice to meet you.</h2>
+      <p id="meet_you">We've been making schools and childcare centers safer and more reliable for over a year.</p>
+    </div> <!-- end Welcome Message -->
+
+    <div id="aboutImg">
+      <img src="img/sign_up_background.svg" alt="">
+    </div>
+
+    <div> <!-- Core values -->
+      <h3 class="h3Head">Our Core Values</h3>
+
+      <div class="valuesList"> <!-- @Customer_Focused -->
+        <figure class="coreImg">
+          <img src="img/shake.jpg" alt="@Customer_Focused" width="100" height="100">
+          <figcaption>Customer Focused</figcaption>
+        </figure>
+
+        <p class="coreParagraph">Our customer support team is made up of the smartest and kindest problem solvers around.</p>
+
+      </div> <!-- end @Customer_Focused -->
+
+      <div class="valuesList"> <!-- @Constantly_Innovating  -->
+        <figure class="coreImg">
+          <img src="img/innovate.jpg" alt="@Constantly_Innovating" width="100" height="100">
+          <figcaption>Constantly Innovating </figcaption>
+        </figure>
+
+        <p class="coreParagraph">We've invested in making our product better, faster, and smarter everyday.</p>
+      </div> <!-- end @Constantly_Innovating -->
+
+      <div class="valuesList"> <!-- @Integrity_Matters -->
+        <figure class="coreImg">
+          <img src="img/integrity.jpg" alt="@Integrity_Matters" width="100" height="100">
+          <figcaption>Integrity Matters </figcaption>
+        </figure>
+
+        <p class="coreParagraph">Our products and our people will always deliver the quality that we've promised.</p>
+
+      </div> <!-- end @Integrity_Matters  -->
+
+    </div> <!-- end Core values -->
+
+
+    <div id="msn"> <!--Our Mission -->
+
+      <hr class="rule">
+      <img src="img/settings.jpg" alt="@Our_Mission" width="70" height="70">
+
+      <p class="msnParagraph">  <span class="msnHead">Our Mission</span> GodsEye helps childcare centers increase transparency and keep families connected, with the safest and
+        highest quality streaming video camera system available.</p>
+    </div> <!-- end Our Mission -->
+
+  </div> <!-- #page-container -->
+
+  <div class="footerContent"> <!-- footer-left -->
+    <h3 id="godseyeSec">GodsEye <span>Security</span></h3>
+
+    <p class="footerLinks">
+      <a href="index.html">Home</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+      <a href="account-management.html">Account Management</a>
+    </p>
+    <p class="footerCompanyName">godseye &copy; 2020</p>
+
+  </div> <!-- end footer left  -->
+
+
+  <script>
+    /* Set the width of the side navigation to 250px */
+
+    function openNav() {
+      document.getElementById("mySidenav") .style.width="250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav") .style.width = "0";
+    }
+  </script>
+
+</body>
+</html>
