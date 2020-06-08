@@ -25,7 +25,7 @@ function login(email, password) {
 								user: result[0],
 							})
 						} else {
-							resolve({
+							reject({
 								status: { failure: 'Wrong password' },
 							})
 						}
@@ -55,20 +55,22 @@ function signup(firstName, lastName, password, n_Children, email) {
 				HashSuite.hashPassword(password).then((hash) => {
 					GodseyeSQL.executeQuery(
 						`INSERT INTO parent (firstName, lastName, password, n_Children, email) VALUES ('${firstName}','${lastName}','${hash}',${n_Children},'${email}')`
-					).then((result) => {
-						if (!result) {
-							resolve({
-								status: { success: 'Account created' },
-							})
-						} else {
-							reject({
-								status: {
-									fatal:
-										'Impossible condition evaluated true',
-								},
-							})
-						}
-					})
+					)
+						.then((result) => {
+							if (!result) {
+								resolve({
+									status: { success: 'Account created' },
+								})
+							} else {
+								reject({
+									status: {
+										fatal:
+											'Impossible condition evaluated true',
+									},
+								})
+							}
+						})
+						.catch((err) => reject(err))
 				})
 			}
 		})

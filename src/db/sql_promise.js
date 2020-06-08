@@ -14,7 +14,7 @@ function executeQuery(query) {
 		connection.connect()
 		connection.query(query, (error, results, fields) => {
 			if (error) {
-				reject(error)
+				reject(error.sqlMessage)
 			} else if (!results[0]) {
 				connection.end()
 				resolve(undefined)
@@ -23,9 +23,6 @@ function executeQuery(query) {
 				resolve(results)
 			}
 		})
-	}).catch((err) => {
-		console.error('Query Failed')
-		console.error(err)
 	})
 }
 

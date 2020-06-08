@@ -11,8 +11,9 @@ const DBMeta = require('./src/db/credentials.json')
 
 // IMPORTED FUNCTIONS
 const parentAuth = require('./src/auth/parent/parent_auth')
-const GodseyeSTREAM = require('./src/api/feed').getFeed
+const GodseyeSTREAM = require('./src/api/feed')
 const getUserCamera = require('./src/api/user_cameras')
+const hubAuth = require('./src/auth/hub/hub_auth')
 
 // Immutables
 const port = process.env.PORT || 5000
@@ -44,6 +45,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/', express.static('public'))
 
 // GET HANDLERS
+// PARENT STREAMER
 app.get('/parents/feed/:cameraId', (req, res, next) => {
 	if (!req.session.user) {
 		res.json({ failure: { reason: 'please login first' } })
@@ -62,9 +64,7 @@ app.get('/parents/feed/:cameraId', (req, res, next) => {
 })
 
 // POST HANDLERS
-
-// AUTHENTICATION ENDPOINTS
-
+// PARENT AUTHENTICATION ENDPOINTS
 app.post('/parents/login', (req, res, next) => {
 	if (req.session.user) {
 		if (req.session.user.parentId) {
@@ -96,16 +96,7 @@ app.post('/parents/login', (req, res, next) => {
 					})
 			})
 			.catch((err) => {
-				if (err.failure) {
-					res.json(err)
-				} else {
-					console.log(err)
-					res.json({
-						status: {
-							failure: 'An internal server error occured.',
-						},
-					})
-				}
+				res.json(err)
 			})
 	}
 })
@@ -131,12 +122,74 @@ app.post('/parents/signup', (req, res, next) => {
 			req.body.email
 		)
 		.then((result) => res.json(result))
-		.catch((err) => res.json(err))
+		.catch((err) =>
+			res.json({
+				status: { failure: err },
+			})
+		)
 })
 
-// OTHER POST REQUESTS
+// CAMERA SERVER REGISTRATION ENDPOINTS : ALL OPS ARE ADMIN AUTHENTICATED BEFORE EXECUTION
+// UPDATE CAMERA_LINK
+app.post('/hubs/update', (req, res, next) => {
+	let cameraObj = {
+		camera_name: req.body.camera_name,
+		camera_link: req.body.camera_link,
+		camera_password: req.body.camera_password,
+	}
+
+	hubAuth
+		.updateCamera(cameraObj)
+		.then((success) => {
+			res.json(success)
+		})
+		.catch((failure) => {
+			res.json(failure)
+		})
+})
+
+// REGISTER CAMERA
+app.post('/hubs/register', (req, res, next) => {
+	let cameraObj = {
+		camera_name: req.body.camera_name,
+		camera_link: req.body.camera_link,
+		camera_password: req.body.camera_password,
+	}
+
+	hubAuth
+		.registerCamera(cameraObj)
+		.then((success) => {
+			res.json(success)
+		})
+		.catch((failure) => {
+			res.json(failure)
+		})
+})
+
+// DELETE CAMERA
+app.post('/hubs/delete', (req, res, next) => {
+	let cameraObj = {
+		camera_name: req.body.camera_name,
+		camera_link: req.body.camera_link,
+		camera_password: req.body.camera_password,
+	}
+
+	hubAuth
+		.deleteCamera(cameraObj)
+		.then((success) => {
+			res.json(success)
+		})
+		.catch((failure) => {
+			res.json(failure)
+		})
+})
+
+// REGISTER NEW CAMERA
+
+// ALL OTHER POST REQUESTS
 app.post('/*', (req, res, next) => {
 	res.sendStatus(404)
 })
 
+// BEGIN LISTENING
 app.listen(port, console.log(`Godseye Server live on port ${port}`))
