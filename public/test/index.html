@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TestStream</title>
+	</head>
+	<body>
+		<script>
+			var myHeaders = new Headers()
+			myHeaders.append(
+				'Content-Type',
+				'application/x-www-form-urlencoded'
+			)
+			myHeaders.append(
+				'Cookie',
+				'godseye.lash=s%3ADyE2odIH0P9D0tVaBgBrojdvPU2geuYE.3PDbcL0jVjt63JoXl2SyWI0zlGwnQVWvNud1VMJtm58'
+			)
+
+			var urlencoded = new URLSearchParams()
+			urlencoded.append('email', 'kevinotuteye@gmail.com')
+			urlencoded.append('password', '1234567890')
+
+			var requestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: urlencoded,
+				redirect: 'follow',
+			}
+
+			fetch('http://localhost:5000/parents/login', requestOptions)
+				.then((response) => response.text())
+				.then((result) => console.log(result))
+				.catch((error) => console.log('error', error))
+		</script>
+		<img src="http://localhost:5000/parents/feed/2" alt="" srcset="" />
+	</body>
+</html>

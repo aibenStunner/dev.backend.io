@@ -7,15 +7,20 @@ const hashSuite = require('../hash/hash_suite')
 function getUserCameras(parentId) {
 	return new Promise((resolve, reject) => {
 		GodseyeSQL.executeQuery(
-			`SELECT wardFirstName, camera_name, camera_link FROM parent_ward_class WHERE parentId = ${parentId}`
+			`SELECT wardFirstName, cameraId, camera_name, camera_link FROM parent_ward_class WHERE parentId = ${parentId}`
 		).then((result) => {
 			if (!result[0]) {
 				resolve([])
 			}
 			let cameraData = []
 			result.forEach((row) => {
-				let { wardFirstName, camera_name, camera_link } = row
-				cameraData.push({ wardFirstName, camera_name, camera_link })
+				let { wardFirstName, cameraId, camera_name, camera_link } = row
+				cameraData.push({
+					wardFirstName,
+					cameraId,
+					camera_name,
+					camera_link,
+				})
 			})
 			resolve(cameraData)
 		})

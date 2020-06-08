@@ -10,9 +10,8 @@ const MySQLStore = require('express-mysql-session')(session)
 const DBMeta = require('./src/db/credentials.json')
 
 // IMPORTED FUNCTIONS
-// const authenticateUser = require('./src/auth/login.js')
 const parentAuth = require('./src/auth/parent/parent_auth')
-// const piper = require('./src/pipe/pied-piper.js')
+const GodseyeSTREAM = require('./src/api/feed').getFeed
 const getUserCamera = require('./src/api/user_cameras')
 
 // Immutables
@@ -45,35 +44,24 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/', express.static('public'))
 
 // GET HANDLERS
-app.get('/feed/:cameraId', (req, res, next) => {
-	if (!req.session.user.parentId) {
+app.get('/parents/feed/:cameraId', (req, res, next) => {
+	if (!req.session.user) {
 		res.json({ failure: { reason: 'please login first' } })
 	} else {
-		let selectedCamera = req.session.cameras.filter((obj) =>
-			obj.id == req.params.cameraId ? obj : ''
-		)
-		selectedCamera[0]
-			? piper.getFeed(selectedCamera[0].link, res)
-			: res.json({
-					failure: { reason: 'access denied to this resource' },
-			  })
+		if (req.params.cameraId) {
+			let selectedCamera = req.session.user.cameraData.filter(
+				(obj) => obj.cameraId == req.params.cameraId
+			)[0]
+			selectedCamera
+				? GodseyeSTREAM(selectedCamera.camera_link, res)
+				: res.json({
+						failure: { reason: 'access denied to this resource' },
+				  })
+		}
 	}
 })
 
 // POST HANDLERS
-
-// USER DATA ENDPOINTS
-app.post('/cameras', (req, res, next) => {
-	console.log(req.session)
-
-	if (!req.session.user.parentId) {
-		res.json({ status: { failure: 'access denied to this resource' } })
-	} else {
-		let userCameraArr = []
-		req.session.cameras.forEach((obj) => userCameraArr.push({ id: obj.id }))
-		res.json(userCameraArr)
-	}
-})
 
 // AUTHENTICATION ENDPOINTS
 
@@ -103,6 +91,7 @@ app.post('/parents/login', (req, res, next) => {
 					})
 
 					.then((loginStatus2) => {
+						req.session.user = loginStatus2.user
 						res.json(loginStatus2)
 					})
 			})
