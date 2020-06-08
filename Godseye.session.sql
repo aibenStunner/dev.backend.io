@@ -1,0 +1,1 @@
+SELECT * FROM parent_ward_camera
