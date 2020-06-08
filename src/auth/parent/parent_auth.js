@@ -1,5 +1,5 @@
-const GodseyeSQL = require('../db/sql_promise')
-const HashSuite = require('../hash/hash_suite')
+const GodseyeSQL = require('../../db/sql_promise')
+const HashSuite = require('../../hash/hash_suite')
 
 /**
  *

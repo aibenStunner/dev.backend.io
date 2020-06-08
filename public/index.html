@@ -5,7 +5,6 @@
 		<title>Homepage</title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
 		<link rel="stylesheet" href="css/normalize.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/tablet.css" />
@@ -80,11 +79,12 @@
 					<fieldset>
 						<legend class="loginHead">LOG IN</legend>
 
-						<label for="uname1">Username*</label><br />
+						<label for="uname1">Email*</label><br />
 						<input
 							type="text"
 							id="uname1"
-							placeholder="Your Username ..."
+							placeholder="Your Email ..."
+							name="email"
 							required
 						/>
 						<br />
@@ -95,6 +95,7 @@
 							id="psw1"
 							placeholder="Your Password ..."
 							required
+							name="password"
 						/>
 						<br />
 
@@ -106,7 +107,7 @@
 						<label for="remember_me1">Remember me</label>
 						<br />
 
-						<button type="submit" value="LOG IN" id="login_button1">
+						<button type="submit" value="LOG IN" id="login_button1" onclick="login()">
 							Login
 						</button>
 
@@ -129,11 +130,11 @@
 					<fieldset>
 						<legend class="loginHead">LOG IN</legend>
 
-						<label for="uname2">Username*</label><br />
+						<label for="uname2">Email*</label><br />
 						<input
 							type="text"
 							id="uname2"
-							placeholder="Your Username ..."
+							placeholder="Your Email ..."
 							required
 						/>
 						<br />
@@ -234,7 +235,11 @@
 
 			function closeNav() {
 				document.getElementById('mySidenav').style.width = '0'
-			}
+      }
+      
+      function login() {
+        
+      }
 		</script>
 	</body>
 </html>

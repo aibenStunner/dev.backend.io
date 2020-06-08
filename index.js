@@ -11,7 +11,7 @@ const DBMeta = require('./src/db/credentials.json')
 
 // IMPORTED FUNCTIONS
 // const authenticateUser = require('./src/auth/login.js')
-const parentAuth = require('./src/auth/parent_auth')
+const parentAuth = require('./src/auth/parent/parent_auth')
 // const piper = require('./src/pipe/pied-piper.js')
 // const getUserCamera = require('./src/camera_ops/getUserCameras.js')
 
@@ -59,12 +59,6 @@ app.get('/feed/:cameraId', (req, res, next) => {
 			  })
 	}
 })
-
-// app.get('/*', (req, res) =>
-// 	res.sendFile('/public/index.html', { root: __dirname }, (err) => {
-// 		if (err) console.error(err)
-// 	})
-// )
 
 // POST HANDLERS
 
