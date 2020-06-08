@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "database": "new_schema",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "Godseye",
+            "password": "dev.io12345",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "dev-io.cc3nd9wih4lf.us-east-2.rds.amazonaws.com",
+            "username": "admin"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

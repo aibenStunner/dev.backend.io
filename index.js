@@ -13,7 +13,7 @@ const DBMeta = require('./src/db/credentials.json')
 // const authenticateUser = require('./src/auth/login.js')
 const parentAuth = require('./src/auth/parent/parent_auth')
 // const piper = require('./src/pipe/pied-piper.js')
-// const getUserCamera = require('./src/camera_ops/getUserCameras.js')
+const getUserCamera = require('./src/api/user_cameras')
 
 // Immutables
 const port = process.env.PORT || 5000
@@ -46,7 +46,7 @@ app.use('/', express.static('public'))
 
 // GET HANDLERS
 app.get('/feed/:cameraId', (req, res, next) => {
-	if (!req.session.userId) {
+	if (!req.session.user.parentId) {
 		res.json({ failure: { reason: 'please login first' } })
 	} else {
 		let selectedCamera = req.session.cameras.filter((obj) =>
@@ -64,14 +64,14 @@ app.get('/feed/:cameraId', (req, res, next) => {
 
 // USER DATA ENDPOINTS
 app.post('/cameras', (req, res, next) => {
-	if (!req.session.userId) {
+	console.log(req.session)
+
+	if (!req.session.user.parentId) {
 		res.json({ status: { failure: 'access denied to this resource' } })
 	} else {
-		let userCameraObject = []
-		req.session.cameras.forEach((obj) =>
-			userCameraObject.push({ id: obj.id })
-		)
-		res.json(userCameraObject)
+		let userCameraArr = []
+		req.session.cameras.forEach((obj) => userCameraArr.push({ id: obj.id }))
+		res.json(userCameraArr)
 	}
 })
 
@@ -91,7 +91,20 @@ app.post('/parents/login', (req, res, next) => {
 					delete loginStatus.user.password
 					req.session.user = loginStatus.user
 				}
-				res.json(loginStatus)
+
+				return loginStatus
+			})
+			.then((loginStatus1) => {
+				let loginStatus = loginStatus1
+				getUserCamera(req.session.user.parentId)
+					.then((cameraData) => {
+						loginStatus.user.cameraData = cameraData
+						return loginStatus
+					})
+
+					.then((loginStatus2) => {
+						res.json(loginStatus2)
+					})
 			})
 			.catch((err) => {
 				if (err.failure) {

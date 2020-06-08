@@ -2,8 +2,8 @@
  * @author Kevin Nene Otuteye
  */
 const mysql = require('mysql')
-const DBMeta = require('./db_cred')
-const hashSuite = require('../password_hasher')
+const DBMeta = require('../../db/credentials.json')
+const hashSuite = require('../../hash/hash_suite')
 /**
  *
  * @param {String} username
