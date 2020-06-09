@@ -51,14 +51,27 @@ app.get('/parents/feed/:cameraId', (req, res, next) => {
 		res.json({ failure: { reason: 'please login first' } })
 	} else {
 		if (req.params.cameraId) {
-			let selectedCamera = req.session.user.cameraData.filter(
-				(obj) => obj.cameraId == req.params.cameraId
-			)[0]
-			selectedCamera
-				? GodseyeSTREAM(selectedCamera.camera_link, res)
-				: res.json({
-						failure: { reason: 'access denied to this resource' },
-				  })
+			getUserCamera(req.session.user.parentId)
+				.then((cameraData) => {
+					req.session.user.cameraData = cameraData
+				})
+				.then(() => {
+					let selectedCamera = req.session.user.cameraData.filter(
+						(obj) => obj.cameraId == req.params.cameraId
+					)[0]
+					selectedCamera
+						? GodseyeSTREAM(selectedCamera.camera_link, res).catch(
+								(err) =>
+									res.json({
+										failure: { reason: err },
+									})
+						  )
+						: res.json({
+								failure: {
+									reason: 'access denied to this resource',
+								},
+						  })
+				})
 		}
 	}
 })

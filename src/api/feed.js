@@ -6,6 +6,8 @@ const fetch = require('node-fetch')
  * @param {Response} res The object to pipe the response through
  */
 function getFeed(cameraLink, res) {
+	console.log(cameraLink)
+
 	return new Promise((resolve, reject) => {
 		fetch(cameraLink)
 			.then((response) => {
