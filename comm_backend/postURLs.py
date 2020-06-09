@@ -35,7 +35,7 @@ post_cam1 = {
 
 # send post request and save response a response object
 post_request0 = requests.post(url = devioBACKEND, data = post_cam0)
-post_request1 = requests.post(url = devioBACKEND, data = post_cam0)
+post_request1 = requests.post(url = devioBACKEND, data = post_cam1)
 
 
 
