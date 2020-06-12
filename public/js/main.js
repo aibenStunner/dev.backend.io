@@ -1,10 +1,23 @@
+let userData = {};
+const loginParent = () => {
+  let email = document.querySelector("#email").value;
+  let password = document.querySelector("#password").value;
 
-//Set the width of the side navigation to 250px
+  var data = `email=${email}&password=${password}`;
 
-  function openNav() {
-    document.getElementById("mySideNav").style.width = "250px";
-  }
+  var xhr = new XMLHttpRequest();
+  xhr.withCredentials = true;
 
-  function closeNav() {
-    document.getElementById("mySideNav").style.width = "0"
-  }
+  xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+      console.log(document.cookie);
+    }
+  });
+
+  xhr.open(
+    "POST",
+    "http://godseye-env.eba-gpcz6ppk.us-east-2.elasticbeanstalk.com/parents/login"
+  );
+
+  xhr.send(data);
+};

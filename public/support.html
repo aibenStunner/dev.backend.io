@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Support</title>
+
+  <meta charset="utf-8">
+  <meta name="description" content="Do you need help from the GodsEye support team? Just contact us right away.">
+  <meta name="author" content="Edmund Amanor">
+  <meta name="keywords" content="Contact Information">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
   <link rel="stylesheet" href="css/normalize.css">
@@ -13,49 +18,45 @@
 </head>
 <body>
 
-  <!--SIDE NAV FOR MOBILE-->
-  <header id="mobileMenu" class="navBar"> <!-- navigation bar block -->
+<!--SIDE NAV FOR MOBILE-->
+<div id="mobileMenu" class="navBar"> <!-- navigation bar block -->
 
-    <img src="img/ball.png"  class="logo" alt="logo" width="50" height="40">
+  <div id="mySidenav" class="sideNav">
+    <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+  </div>
 
-    <div id="mySidenav" class="sideNav">
-      <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
-      <a href="index.html">Home</a>
-      <a href="signup.html">Sign Up</a>
-      <a href="support.html">Support</a>
-      <a href="about.html">About</a>
-    </div>
+  <div id="menuIcon">
+    <span onclick="openNav()">&#9776; MENU </span>
+  </div>
 
-    <li id="menuIcon">
-      <span style="font-size: 20px; cursor: pointer"onclick="openNav()">&#9776; MENU </span>
-    </li>
+  <div class="logo">
+    <img src="img/ball.png"  alt="logo">
+  </div>
 
-  </header> <!--end nav block -->
-  <!-- #SIDE NAV FOR MOBILE-->
+</div> <!--end nav block -->
+<!-- #SIDE NAV FOR MOBILE-->
 
 
-  <header id="bigMenu" class="navBar"> <!-- navigation bar block -->
-    <ul id>
-      <li>
-        <a href="index.html">Home</a>
-      </li>
-      <li>
-        <a href="signup.html">Sign Up</a>
-      </li>
-      <li>
-        <a href="about.html">About</a>
-      </li>
-      <li>
-        <a href="support.html">Support</a>
-      </li>
-      <li class="logo" style="float: right">
-        <img src="img/ball.png" alt="logo" width="50" height="50">
-      </li>
-    </ul>
-  </header> <!--end nav block -->
-  <br><br><br>
+<div id="bigMenu" class="navBar"> <!-- navigation bar block -->
 
-  <div class="pageContainer">
+  <div>
+    <a href="index.html">Home</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support</a>
+  </div>
+
+  <div class="logo">
+    <img src="img/ball.png"  alt="logo">
+  </div>
+
+</div> <!--end nav block -->
+
+  <div class="pageContainer" id="supportContainer">
 
     <div id="contactBox"> <!-- Contact Info -->
       <p>We aim to please. How can we help?</p>
@@ -65,41 +66,39 @@
         <p><b>Hours</b>: Monday through Friday, 6am - 5pm GMT</p>
       </section>
       <p>Or complete the form below and we'll respond within 24 business hours.</p>
+
+      <hr>
     </div> <!-- end Contact Info -->
 
-    <hr>
 
     <form action="#" id="support-form"> <!-- support form -->
 
-        <div  id="personInfo">
+      <div id="infoBox">
+
+        <div  class="Info">
           <h3 class="h3Head">Your Contact Information</h3>
 
-          <label for="cname">Name*</label><br>
+          <label for="cname">Name*</label>
           <input type="text" id="cname" required>
-          <br>
 
-          <label for="cphone">Phone*</label><br>
+          <label for="cphone">Phone*</label>
           <input type="tel" id="cphone" required>
-          <br>
 
-          <label for="email">Email*</label><br>
+          <label for="email">Email*</label>
           <input type="email" id="email" required>
-          <br>
 
-          <label for="uname">Username (optional)</label><br>
+          <label for="uname">Username (optional)</label>
           <input type="text" id="uname">
-          <br>
         </div>
 
-        <div  id="schInfo">
+        <div  class="Info">
           <h3 class="h3Head">School Contact Information</h3>
 
-          <label for="sname">School Name*</label><br>
+          <label for="sname">School Name*</label>
           <input type="text" id="sname" required>
 
-          <label for="address">Address</label><br>
+          <label for="address">Address</label>
           <input type="text" id="address">
-          <br>
 
           <label for="scity">City*</label><br>
           <select name="City" id="scity" form="support-form">
@@ -109,9 +108,8 @@
             <option value="Sunyani">Sunyani</option>
             <option value="Takoradi">Takoradi</option>
           </select>
-          <br>
 
-          <label for="sreg">Region*</label><br>
+          <label for="sreg">Region*</label>
           <select name="Region" id="sreg" form="support-form">
             <option value="Accra">Greater Accra</option>
             <option value="Kumasi">Ashanti</option>
@@ -120,13 +118,15 @@
             <option value="Takoradi">Western</option>
           </select>
         </div>
-      <br>
+
+      </div>
+
+
 
         <div id="additionalInfo">
           <h3 class="h3Head">Additional Information</h3>
           <p>Please provide comments and questions here.</p>
-          <textarea name="Message" id="additional-info" cols="50" rows="10"></textarea>
-          <br>
+          <textarea name="Message"></textarea>
 
           <button type="submit" value="SIGN UP">SUBMIT</button>
         </div>

@@ -1,87 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SignUp</title>
+
+  <meta charset="utf-8">
+  <meta name="description" content="Register for your GodsEye account to start enjoying our services">
+  <meta name="author" content="Edmund Amanor">
+  <meta name="keywords" content="godseye signup">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/tablet.css">
-  <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/tablet.css">
+    <link rel="stylesheet" href="css/desktop.css">
 </head>
 
 <body id="signupBackground">
 
-  <!--SIDE NAV FOR MOBILE-->
-  <header id="mobileMenu" class="navBar"> <!-- navigation bar block -->
-
-    <img src="img/ball.png"  class="logo" alt="logo" width="50" height="40">
+<!--SIDE NAV FOR MOBILE-->
+<div id="mobileMenu" class="navBar"> <!-- navigation bar block -->
 
     <div id="mySidenav" class="sideNav">
-      <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
-      <a href="index.html">Home</a>
-      <a href="signup.html">Sign Up</a>
-      <a href="support.html">Support</a>
-      <a href="about.html">About</a>
+        <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="support.html">Support</a>
+        <a href="about.html">About</a>
     </div>
 
-    <li id="menuIcon">
-      <span style="font-size: 20px; cursor: pointer"onclick="openNav()">&#9776; MENU </span>
-    </li>
+    <div id="menuIcon">
+        <span onclick="openNav()">&#9776; MENU </span>
+    </div>
 
-  </header> <!--end nav block -->
-  <!-- #SIDE NAV FOR MOBILE-->
+    <div class="logo">
+        <img src="img/ball.png"  alt="logo">
+    </div>
+
+</div> <!--end nav block -->
+<!-- #SIDE NAV FOR MOBILE-->
 
 
-  <header id="bigMenu" class="navBar"> <!-- navigation bar block -->
-    <ul id>
-      <li>
+<div id="bigMenu" class="navBar"> <!-- navigation bar block -->
+
+    <div>
         <a href="index.html">Home</a>
-      </li>
-      <li>
         <a href="signup.html">Sign Up</a>
-      </li>
-      <li>
         <a href="about.html">About</a>
-      </li>
-      <li>
         <a href="support.html">Support</a>
-      </li>
-      <li id="logo" style="float: right">
-        <img src="img/ball.png" alt="logo" width="50" height="50">
-      </li>
-    </ul>
-  </header> <!--end nav block -->
-  <br><br><br>
+    </div>
 
-  <h3 id="signupHead"> Sign Up</h3>
+    <div class="logo">
+        <img src="img/ball.png"  alt="logo">
+    </div>
 
-  <div id="signupCol">
+</div> <!--end nav block -->
+
+  <div id="signupCol"> <!-- #page-container -->
 
     <div class="signupContainer"> <!--  Sign Up Form -->
 
+        <h3 id="signupHead"> Sign Up</h3>
+
       <form action="#" id="signup">
-        <fieldset>
-          <label for="fname">First Name*</label><br>
+
+          <label for="fname">First Name*</label>
           <input type="text" id="fname" required>
-          <br>
 
-          <label for="lname">Last Name*</label><br>
+          <label for="lname">Last Name*</label>
           <input type="text" id="lname"  required>
-          <br>
 
-          <label for="phone">Phone*</label><br>
+          <label for="phone">Phone*</label>
           <input type="tel" id="phone" required>
-          <br>
 
-          <label for="email">Email*</label><br>
+          <label for="email">Email*</label>
           <input type="email" id="email" required>
-          <br>
 
-          <label for="city">City*</label><br>
+          <label for="city">City*</label>
           <select name="City" id="city" form="signup">
             <option value="Accra">Accra</option>
             <option value="Kumasi">Kumasi</option>
@@ -89,9 +85,8 @@
             <option value="Sunyani">Sunyani</option>
             <option value="Takoradi">Takoradi</option>
           </select>
-          <br>
 
-          <label for="ward">Ward&apos;s School*</label><br>
+          <label for="ward">Ward&apos;s School*</label>
           <select name="School" id="ward" form="signup">
             <option value="Best Brains">Best Brains International School</option>
             <option value="High Class">High Class Academy</option>
@@ -99,26 +94,21 @@
             <option value="Proper Care">Proper Care Montessori</option>
             <option value="ABC">ABC Daycare Center</option>
           </select>
-          <br>
 
-          <label for="uname">Username*</label><br>
+          <label for="uname">Username*</label>
           <input type="text" id="uname" required>
-          <br>
 
-          <label for="psw">Password*</label><br>
+          <label for="psw">Password*</label>
           <input type="password" id="psw" required>
-          <br>
 
-          <label for="rpsw">Repeat Password*</label><br>
+          <label for="rpsw">Repeat Password*</label>
           <input type="password" id="rpsw" required>
-          <br>
 
           <input type="checkbox" id="agree" name="Agreement" required>
           <label for="agree">I Agree to the terms of use and customer terms.</label>
-          <br>
 
           <button type="submit" value="SIGN UP">SIGN UP</button>
-        </fieldset>
+
       </form>
     </div> <!-- end Sign Up Form -->
 

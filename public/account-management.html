@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Account Management</title>
+    <title>GodsEye-Account_Management</title>
+
+  <meta charset="utf-8">
+  <meta name="description" content="management everything about your GodsEye account">
+  <meta name="author" content="Edmund Amanor">
+  <meta name="keywords" content="change password, forgot username, add children, change classroom">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
@@ -14,99 +19,100 @@
 
 <body>
 
-  <!--SIDE NAV FOR MOBILE-->
-  <header id="mobileMenu" class="navBar"> <!-- navigation bar block -->
+<!--SIDE NAV FOR MOBILE-->
+<div id="mobileMenu" class="navBar"> <!-- navigation bar block -->
 
-    <img src="img/ball.png"  class="logo" alt="logo" width="50" height="40">
+  <div id="mySidenav" class="sideNav">
+    <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+  </div>
 
-    <div id="mySidenav" class="sideNav">
-      <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
-      <a href="index.html">Home</a>
-      <a href="signup.html">Sign Up</a>
-      <a href="support.html">Support</a>
-      <a href="about.html">About</a>
-    </div>
+  <div id="menuIcon">
+    <span onclick="openNav()">&#9776; MENU </span>
+  </div>
 
-    <li id="menuIcon">
-      <span style="font-size: 20px; cursor: pointer"onclick="openNav()">&#9776; MENU </span>
-    </li>
+  <div class="logo">
+    <img src="img/ball.png"  alt="logo">
+  </div>
 
-  </header> <!--end nav block -->
-  <!-- #SIDE NAV FOR MOBILE-->
+</div> <!--end nav block -->
+<!-- #SIDE NAV FOR MOBILE-->
 
 
-  <header id="bigMenu" class="navBar"> <!-- navigation bar block -->
-    <ul id>
-      <li>
-        <a href="index.html">Home</a>
-      </li>
-      <li>
-        <a href="signup.html">Sign Up</a>
-      </li>
-      <li>
-        <a href="about.html">About</a>
-      </li>
-      <li>
-        <a href="support.html">Support</a>
-      </li>
-      <li class="logo" style="float: right">
-        <img src="img/ball.png" alt="logo" width="50" height="50">
-      </li>
-    </ul>
-  </header> <!--end nav block -->
-  <br><br><br>
+<div id="bigMenu" class="navBar"> <!-- navigation bar block -->
 
-  <div class="pageContainer">
+  <div>
+    <a href="index.html">Home</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support</a>
+  </div>
+
+  <div class="logo">
+    <img src="img/ball.png"  alt="logo">
+  </div>
+
+</div> <!--end nav block -->
+
+  <div class="pageContainer" id="accMgmtContainer">
 
     <div>
       <h3 class="h3Head">Manage your account and preferences - online</h3>
     </div>
 
+    <div id="miniContainer">
+
       <div class="accCol"> <!-- accCol 1 -->
 
         <div class="accBlock"> <!--Change Password -->
-          <img src="img/settings.jpg" alt="@Change_Password" width="60" height="60">
-          <p class="accParagraph"> <span class="accHead"><a href="change-password.html" >Change Password</a></span>Choose a new password for your account if the old is no longer secure.</p>
+          <img src="img/settings.jpg" alt="@Change_Password">
+          <p class="accParagraph"> <span class="accHead"><a href="change-password.html" >Change Password</a>
+          </span>Choose a new password for your account if the old is no longer secure.</p>
         </div> <!-- end Change Password -->
-        <br>
 
         <div class="accBlock"> <!-- Forgot Password -->
-          <img src="img/password2.jpg" alt="Forgot Password" height="60" width="60">
-          <p class="accParagraph"> <span class="accHead"><a href="forgot-password.html" >Forgot Password</a></span> Provide your username and a password reset email will be sent to the email we have on file for your account.</p>
+          <img src="img/password2.jpg" alt="Forgot Password">
+          <p class="accParagraph"> <span class="accHead"><a href="forgot-password.html" >Forgot Password</a>
+          </span> Provide your username and a password reset email will be sent to the email we have on file for your account.</p>
         </div> <!-- end Forgot Password -->
-        <br>
 
         <div class="accBlock"> <!-- Forgot Username -->
-          <img src="img/write.jpg" alt="Forgot Username" height="60" width="60">
-          <p class="accParagraph"> <span class="accHead"><a href="forgot-username.html" >Forgot Username</a></span> Provide your email address and your username will be emailed to you.</p>
+          <img src="img/write.jpg" alt="Forgot Username">
+          <p class="accParagraph"> <span class="accHead"><a href="forgot-username.html" >Forgot Username</a>
+          </span> Provide your email address and your username will be emailed to you.</p>
         </div> <!-- end Forgot Username -->
-        <br>
 
       </div>  <!-- #accCol 1 -->
 
-      <div id="accCol2" class="accCol"> <!-- accCol 2 -->
+      <div class="accCol"> <!-- accCol 2 -->
 
         <div class="accBlock"> <!-- Change Classroom -->
-          <img src="img/classroom1.jpg" alt="Change Classroom" height="60" width="60">
-          <p class="accParagraph"> <span class="accHead"><a href="#" >Change Classroom</a></span> Let us know when your child has changed classroom and we'll update your camera.</p>
+          <img src="img/classroom1.jpg" alt="Change Classroom">
+          <p class="accParagraph"> <span class="accHead"><a href="#" >Change Classroom</a>
+          </span> Let us know when your child has changed classroom and we'll update your camera.</p>
         </div> <!-- end Change Classroom -->
-        <br>
 
         <div class="accBlock"> <!-- Add Children -->
-          <img src="img/children1.jpg" alt="Add or Remove Children" height="60" width="60">
-          <p class="accParagraph"> <span class="accHead"><a href="#" >Add or Remove Children</a></span> Introducing a new child or graduating an older one?
+          <img src="img/children1.jpg" alt="Add or Remove Children" >
+          <p class="accParagraph"> <span class="accHead"><a href="#" >Add or Remove Children</a>
+          </span> Introducing a new child or graduating an older one?
             Let us know and we'll adjust your account.</p>
         </div> <!-- end Add Children -->
-        <br>
-
 
         <div class="accBlock"> <!-- Log-Out -->
-          <img src="img/cancel3.jpg" alt="Log-Out" height="60" width="60">
-          <p class="accParagraph"> <span class="accHead"><a href="#" >LogOut</a></span> Log out of your GodsEye account.</p>
+          <img src="img/cancel3.jpg" alt="Log-Out" >
+          <p class="accParagraph"> <span class="accHead"><a href="#" >LogOut</a>
+          </span> Log out of your GodsEye account.</p>
         </div> <!-- end Log-Out -->
-        <br>
 
-      </div> <!-- #accCol 2 -->
+      </div> <!-- #accCoL -->
+
+    </div>
+
+
 
   </div> <!-- #page-container -->
 

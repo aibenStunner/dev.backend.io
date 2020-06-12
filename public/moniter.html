@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+
+    <title>GodsEye-Monitor</title>
+
+  <meta charset="utf-8">
+  <meta name="description" content="Keep a close eye on your ward anytime and from anywhere with just a click">
+  <meta name="author" content="Edmund Amanor">
+  <meta name="keywords" content="monitor classroom, ward">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Monitor</title>
 
 
   <link rel="stylesheet" href="css/normalize.css">
@@ -15,53 +20,49 @@
 
 <body>
 
-    <!--SIDE NAV FOR MOBILE-->
-    <header id="mobileMenu" class="navBar"> <!-- navigation bar block -->
+<!--SIDE NAV FOR MOBILE-->
+<div id="mobileMenu" class="navBar"> <!-- navigation bar block -->
 
-      <img src="img/ball.png"  class="logo" alt="logo" width="50" height="40">
+  <div id="mySidenav" class="sideNav">
+    <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+  </div>
 
-      <div id="mySidenav" class="sideNav">
-        <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
-        <a href="index.html">Home</a>
-        <a href="signup.html">Sign Up</a>
-        <a href="support.html">Support</a>
-        <a href="about.html">About</a>
-      </div>
+  <div id="menuIcon">
+    <span onclick="openNav()">&#9776; MENU </span>
+  </div>
 
-      <li id="menuIcon">
-        <span style="font-size: 20px; cursor: pointer"onclick="openNav()">&#9776; MENU </span>
-      </li>
+  <div class="logo">
+    <img src="img/ball.png"  alt="logo">
+  </div>
 
-    </header> <!--end nav block -->
-    <!-- #SIDE NAV FOR MOBILE-->
+</div> <!--end nav block -->
+<!-- #SIDE NAV FOR MOBILE-->
 
 
-    <header id="bigMenu" class="navBar"> <!-- navigation bar block -->
-      <ul id>
-        <li>
-          <a href="index.html">Home</a>
-        </li>
-        <li>
-          <a href="signup.html">Sign Up</a>
-        </li>
-        <li>
-          <a href="about.html">About</a>
-        </li>
-        <li>
-          <a href="support.html">Support</a>
-        </li>
-        <li class="logo" style="float: right">
-          <img src="img/ball.png" alt="logo" width="50" height="50">
-        </li>
-      </ul>
-    </header> <!--end nav block -->
-    <br><br><br>
+<div id="bigMenu" class="navBar"> <!-- navigation bar block -->
+
+  <div>
+    <a href="index.html">Home</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support</a>
+  </div>
+
+  <div class="logo">
+    <img src="img/ball.png"  alt="logo">
+  </div>
+
+</div> <!--end nav block -->
 
   <div class="pageContainer" id="pageContainerMonitorScreen">
 
     <div class="studyA" id="studyA">
       <h3>Study A</h3>
-      <video height="150" width="270" controls>
+      <video  controls>
         <source src="img/" type="video/mp4">
       </video>
       <p>Camera 1</p>
@@ -69,15 +70,16 @@
 
     <div class="studyA" id="studyB">
       <h3>Study B</h3>
-      <video height="150" width="270" controls>
-        <source src="img/Peter.mp4" type="video/mp4">
+      <video controls>
+        <source src="img/" type="video/mp4">
       </video>
       <p>Camera 2</p>
     </div>
+
     <div class="clearfix"></div>
     <div class="studyA" id="studyC">
       <h3>Study C</h3>
-      <video height="150" width="270" controls>
+      <video controls>
         <source src="img/" type="video/mp4">
       </video>
       <p>Camera 3</p>
@@ -85,7 +87,7 @@
 
     <div class="studyA" id="studyD">
       <h3>Study D</h3>
-      <video height="150" width="270" controls>
+      <video controls>
         <source src="img/" type="video/mp4">
       </video>
       <p>Camera 4</p>
