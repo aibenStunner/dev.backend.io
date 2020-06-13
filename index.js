@@ -81,7 +81,10 @@ app.get('/parents/feed/:cameraId', (req, res, next) => {
 app.post('/parents/login', (req, res, next) => {
 	if (req.session.user) {
 		if (req.session.user.parentId) {
-			res.json({ status: { illegal: 'Parent logged in already' } })
+			res.json({
+				status: { illegal: 'Parent logged in already' },
+				user: req.session.user,
+			})
 		}
 	} else {
 		parentAuth
