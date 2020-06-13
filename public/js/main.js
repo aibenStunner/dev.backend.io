@@ -12,9 +12,11 @@ const loginParent = () => {
 		redirect: 'follow',
 	}
 
-	fetch(`${window.location.hostname}/parents/login`, requestOptions)
+	fetch(`/parents/login`, requestOptions)
 		.then((response) => response.json())
 		.then((result) => {
+			console.log(result.user)
+
 			localStorage.setItem('user', JSON.stringify(result.user))
 			window.location.href = '/feeds.html'
 		})
