@@ -12,7 +12,7 @@ const loginParent = () => {
 		redirect: 'follow',
 	}
 
-	fetch('http://localhost:5000/parents/login', requestOptions)
+	fetch(`${window.location.hostname}/parents/login`, requestOptions)
 		.then((response) => response.json())
 		.then((result) => {
 			localStorage.setItem('user', JSON.stringify(result.user))
