@@ -15,9 +15,11 @@ const GodseyeSTREAM = require('./src/api/feed')
 const getUserCamera = require('./src/api/user_cameras')
 const hubAuth = require('./src/auth/hub/hub_auth')
 
-// Immutables
-const port = process.env.PORT || 5000
+// SESSION STORE
 const sessionStore = new MySQLStore(DBMeta.RDS)
+
+// ENVIRONMENT VARIABLES
+const port = process.env.PORT || 5000
 
 // MIDDLEWARE
 app.use(
@@ -99,7 +101,12 @@ app.post('/parents/logout', (req, res, next) => {
 	res.json(parentAuth.logout(req))
 })
 
-app.post('/parents/signup', (req, res, next) => {
+
+/**
+ * ADMIN ONLY ENDPOINTS
+ */
+
+app.post('/admin/parents/signup', (req, res, next) => {
 	parentAuth
 		.signup(
 			req.body.firstName,
