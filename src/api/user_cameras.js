@@ -1,6 +1,5 @@
-const DBMeta = require('../db/credentials.json')
 const GodseyeSQL = require('../db/sql_promise')
-const hashSuite = require('../hash/hash_suite')
+
 /**
  * @param {String} parentId
  */

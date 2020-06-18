@@ -10,7 +10,7 @@ const MySQLStore = require('express-mysql-session')(session)
 const DBMeta = require('./src/db/credentials.json')
 
 // IMPORTED FUNCTIONS
-const parentAuth = require('./src/auth/parent/parent_auth')
+const parentAuth = require('./src/auth/parent/parent_auth new')
 const GodseyeSTREAM = require('./src/api/feed')
 const getUserCamera = require('./src/api/user_cameras')
 const hubAuth = require('./src/auth/hub/hub_auth')
@@ -80,52 +80,23 @@ app.get('/parents/feed/:cameraId', (req, res, next) => {
 // PARENT AUTHENTICATION ENDPOINTS
 app.post('/parents/login', (req, res, next) => {
 	if (req.session.user) {
-		if (req.session.user.parentId) {
-			res.json({
-				status: { illegal: 'Parent logged in already' },
-				user: req.session.user,
-			})
-		}
+		res.json({
+			status: { illegal: 'Parent logged in already' },
+			user: req.session.user,
+		})
 	} else {
 		parentAuth
 			.login(req.body.email, req.body.password)
-			.then((loginStatus) => {
-				// SESSION BEGIN
-				if (loginStatus.status.success) {
-					delete loginStatus.user.password
-					req.session.user = loginStatus.user
-				}
-
-				return loginStatus
+			.then((record) => {
+				req.session.user = record.user
+				res.json(record)
 			})
-			.then((loginStatus1) => {
-				let loginStatus = loginStatus1
-				getUserCamera(req.session.user.parentId)
-					.then((cameraData) => {
-						loginStatus.user.cameraData = cameraData
-						return loginStatus
-					})
-
-					.then((loginStatus2) => {
-						req.session.user = loginStatus2.user
-						res.json(loginStatus2)
-					})
-			})
-			.catch((err) => {
-				res.json(err)
-			})
+			.catch((err) => res.json(err))
 	}
 })
 
 app.post('/parents/logout', (req, res, next) => {
-	if (req.session.user) {
-		req.session.destroy((err) => {
-			if (err) throw err
-		})
-		res.json({ status: { success: 'Session ended' } })
-	} else {
-		res.json({ status: { failure: 'No active session found' } })
-	}
+	res.json(parentAuth.logout(req))
 })
 
 app.post('/parents/signup', (req, res, next) => {
