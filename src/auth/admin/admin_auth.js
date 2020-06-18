@@ -40,10 +40,29 @@ function addAdmin(firstName, lastName, password, email, phoneNumber) {
 	})
 }
 
+// Update an admin
+function updateAdmin(firstName, lastName, password, email, phoneNumber) {
+	return new Promise((resolve, reject) => {
+		GodseyeSQL.executeQuery(
+			`UPDATE admin SET adminFirstName = '${firstName}', adminLastName='${lastName}', adminPhoneNumber='${phoneNumber}' WHERE adminEmail = '${email}';`
+		)
+			.then((result) => {
+				resolve({ status: { success: 'Admin account updated' } })
+			})
+			.catch((err) => reject({ status: { failure: err } }))
+	})
+}
+
 // Remove an admin
 function removeAdmin(email) {
 	return new Promise((resolve, reject) => {
 		GodseyeSQL.executeQuery(`DELETE FROM admin WHERE adminEmail='${email}'`)
+			.then((results) => {
+				resolve({ status: { success: 'Admin account deleted' } })
+			})
+			.catch((err) => {
+				reject({ status: { failure: err } })
+			})
 	})
 }
 
@@ -73,4 +92,35 @@ function addParent(firstName, lastName, password, n_Children, email) {
 			}
 		})
 	})
+}
+
+// Update a parent
+function updateAdmin(firstName, lastName, email, n_Children) {
+	return new Promise((resolve, reject) => {
+		GodseyeSQL.executeQuery(
+			`UPDATE parent SET firstName = '${firstName}', lastName='${lastName}', n_Children='${n_Children}' WHERE email = '${email}';`
+		)
+			.then((result) => {
+				resolve({ status: { success: 'Admin account updated' } })
+			})
+			.catch((err) => reject({ status: { failure: err } }))
+	})
+}
+
+// Remove a parent
+function removeParent(email) {
+	return new Promise((resolve, reject) => {
+		GodseyeSQL.executeQuery(`DELETE FROM parent WHERE email='${email}'`)
+			.then((results) => {
+				resolve({ status: { success: 'Parent account deleted' } })
+			})
+			.catch((err) => {
+				reject({ status: { failure: err } })
+			})
+	})
+}
+
+module.exports = {
+	admins: { addAdmin, removeAdmin },
+	parents: { addParent, removeParent },
 }
