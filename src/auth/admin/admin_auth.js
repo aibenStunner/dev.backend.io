@@ -1,19 +1,16 @@
 const GodseyeSQL = require('../../db/sql_promise')
 const HashSuite = require('../../hash/hash_suite')
-const { reject } = require('bcrypt/promises')
-const { __esModule } = require('node-fetch')
 
+// ADMIN OPERATIONS
+// Add an admin
 /**
  *
  * @param {String} firstName
  * @param {String} lastName
  * @param {String} password
- * @param {Number} n_Children
  * @param {String} email
+ * @param {String} phoneNumber
  */
-
-// ADMIN OPERATIONS
-// Add an admin
 function addAdmin(firstName, lastName, password, email, phoneNumber) {
 	return new Promise((resolve, reject) => {
 		GodseyeSQL.executeQuery(
@@ -95,13 +92,13 @@ function addParent(firstName, lastName, password, n_Children, email) {
 }
 
 // Update a parent
-function updateAdmin(firstName, lastName, email, n_Children) {
+function updateParent(firstName, lastName, email, n_Children) {
 	return new Promise((resolve, reject) => {
 		GodseyeSQL.executeQuery(
 			`UPDATE parent SET firstName = '${firstName}', lastName='${lastName}', n_Children='${n_Children}' WHERE email = '${email}';`
 		)
 			.then((result) => {
-				resolve({ status: { success: 'Admin account updated' } })
+				resolve({ status: { success: 'Parent account updated' } })
 			})
 			.catch((err) => reject({ status: { failure: err } }))
 	})
@@ -121,6 +118,6 @@ function removeParent(email) {
 }
 
 module.exports = {
-	admins: { addAdmin, removeAdmin },
-	parents: { addParent, removeParent },
+	admins: { addAdmin, updateAdmin, removeAdmin },
+	parents: { addParent, updateParent, removeParent },
 }
