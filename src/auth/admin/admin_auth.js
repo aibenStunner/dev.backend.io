@@ -2,6 +2,36 @@ const GodseyeSQL = require('../../db/sql_promise')
 const HashSuite = require('../../hash/hash_suite')
 
 // ADMIN OPERATIONS
+
+// Admin Login
+function adminLogin(email, password) {
+	return new Promise((resolve, reject) => {
+		GodseyeSQL.executeQuery(
+			`SELECT admin from admin WHERE email='${email}'`
+		).then((result) => {
+			if (!result) {
+				reject({ failure: { reason: 'Admin not found' } })
+			} else {
+				HashSuite.comparePassword(password, result[0].password).then(
+					(isMatch) => {
+						if (isMatch) {
+							resolve({
+								status: {
+									success: 'Admin logged in',
+								},
+							})
+						} else {
+							reject({
+								status: { failure: 'Wrong password' },
+							})
+						}
+					}
+				)
+			}
+		})
+	})
+}
+
 // Add an admin
 /**
  *
