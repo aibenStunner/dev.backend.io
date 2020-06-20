@@ -7,23 +7,17 @@ const HashSuite = require('../../hash/hash_suite')
 function adminLogin(email, password) {
 	return new Promise((resolve, reject) => {
 		GodseyeSQL.executeQuery(
-			`SELECT admin from admin WHERE email='${email}'`
+			`SELECT password from admin WHERE adminEmail='${email}'`
 		).then((result) => {
 			if (!result) {
-				reject({ failure: { reason: 'Admin not found' } })
+				reject('Admin not found')
 			} else {
 				HashSuite.comparePassword(password, result[0].password).then(
 					(isMatch) => {
 						if (isMatch) {
-							resolve({
-								status: {
-									success: 'Admin logged in',
-								},
-							})
+							resolve('Admin logged in')
 						} else {
-							reject({
-								status: { failure: 'Wrong password' },
-							})
+							reject('Wrong password')
 						}
 					}
 				)
@@ -50,11 +44,11 @@ function addAdmin(firstName, lastName, password, email, phoneNumber) {
 			`SELECT admin from admin WHERE adminEmail='${email}'`
 		).then((result) => {
 			if (result) {
-				reject({ status: { failure: 'This email already exists' } })
+				reject('This email already exists')
 			} else {
 				HashSuite.hashPassword(password).then((hash) => {
 					GodseyeSQL.executeQuery(
-						`INSERT INTO admin (adminFirstName, adminLastName, password, adminEmail, adminPhoneNumber) VALUES ('${firstName}','${lastName}','${hash}',${email},'${phoneNumber}')`
+						`INSERT INTO admin (adminFirstName, adminLastName, password, adminEmail, adminPhoneNumber) VALUES ('${firstName}','${lastName}','${hash}','${email}','${phoneNumber}')`
 					)
 						.then((result) => {
 							if (!result) {
@@ -71,15 +65,23 @@ function addAdmin(firstName, lastName, password, email, phoneNumber) {
 }
 
 // Update an admin
-function updateAdmin(firstName, lastName, password, email, phoneNumber) {
+function updateAdmin(firstName, lastName, email, phoneNumber) {
 	return new Promise((resolve, reject) => {
 		GodseyeSQL.executeQuery(
-			`UPDATE admin SET adminFirstName = '${firstName}', adminLastName='${lastName}', adminPhoneNumber='${phoneNumber}' WHERE adminEmail = '${email}';`
-		)
-			.then((result) => {
-				resolve({ status: { success: 'Admin account updated' } })
-			})
-			.catch((err) => reject({ status: { failure: err } }))
+			`SELECT admin from admin WHERE adminEmail='${email}'`
+		).then((result) => {
+			if (result) {
+				GodseyeSQL.executeQuery(
+					`UPDATE admin SET adminFirstName = '${firstName}', adminLastName='${lastName}', adminPhoneNumber='${phoneNumber}' WHERE adminEmail = '${email}';`
+				)
+					.then((result) => {
+						resolve({ status: { success: result } })
+					})
+					.catch((err) => reject(err))
+			} else {
+				reject('Admin account does not exist')
+			}
+		})
 	})
 }
 
@@ -128,12 +130,22 @@ function addParent(firstName, lastName, password, n_Children, email) {
 function updateParent(firstName, lastName, email, n_Children) {
 	return new Promise((resolve, reject) => {
 		GodseyeSQL.executeQuery(
-			`UPDATE parent SET firstName = '${firstName}', lastName='${lastName}', n_Children='${n_Children}' WHERE email = '${email}';`
-		)
-			.then((result) => {
-				resolve({ status: { success: 'Parent account updated' } })
-			})
-			.catch((err) => reject({ status: { failure: err } }))
+			`SELECT parentId from parent WHERE email='${email}'`
+		).then((result) => {
+			if (result) {
+				GodseyeSQL.executeQuery(
+					`UPDATE parent SET firstName = '${firstName}', lastName='${lastName}', n_Children='${n_Children}' WHERE email = '${email}';`
+				)
+					.then((result) => {
+						resolve({
+							status: { success: 'Parent account updated' },
+						})
+					})
+					.catch((err) => reject({ status: { failure: err } }))
+			} else {
+				reject('Parent account does not exist')
+			}
+		})
 	})
 }
 
@@ -152,7 +164,54 @@ function removeParent(email) {
 
 // Ward Operations
 
+function addWard(wardAge, wardFirstName, wardLastName, parentId, classId) {
+	return new Promise((resolve, reject) => {
+		GodseyeSQL.executeQuery(
+			`SELECT wardAge from ward WHERE wardFirstName='${wardFirstName}' AND wardLastName='${wardLastName}' AND parentId=${parentId} AND classId=${classId}`
+		).then((result) => {
+			if (result) {
+				reject({ status: { failure: 'This child already exists' } })
+			} else {
+				GodseyeSQL.executeQuery(
+					`INSERT INTO ward (wardAge, wardFirstName, wardLastName, parentId, classId) VALUES (${wardAge},'${wardFirstName}','${wardLastName}',${parentId},${classId})`
+				)
+					.then((result) => {
+						resolve({
+							status: { success: 'Child entry created' },
+						})
+					})
+					.catch((err) => reject(err))
+			}
+		})
+	})
+}
+
+function removeWard(wardAge, wardFirstName, wardLastName, parentId, classId) {
+	return new Promise((resolve, reject) => {
+		GodseyeSQL.executeQuery(
+			`SELECT wardAge from ward WHERE wardFirstName='${wardFirstName}' AND wardLastName='${wardLastName}' AND parentId=${parentId} AND classId=${classId}`
+		).then((results) => {
+			if (results[0]) {
+				GodseyeSQL.executeQuery(
+					`DELETE FROM ward WHERE wardAge=${wardAge} AND wardFirstName='${wardFirstName}' AND wardLastName='${wardLastName}' AND parentId=${parentId} AND classId=${classId}`
+				)
+					.then((results) => {
+						resolve({
+							status: { success: 'Ward entry deleted' },
+						})
+					})
+					.catch((err) => {
+						reject({ status: { failure: err } })
+					})
+			} else {
+				reject({ status: { failure: 'Child not found' } })
+			}
+		})
+	})
+}
+
 module.exports = {
 	admins: { adminLogin, adminLogout, addAdmin, updateAdmin, removeAdmin },
 	parents: { addParent, updateParent, removeParent },
+	wards: { addWard, removeWard },
 }

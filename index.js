@@ -1,3 +1,13 @@
+/**
+ * @name Godseye API
+ * @author dev.io
+ * @description This is the Node.js backend and REST API that handles all authentication, 
+ * 				information and streaming requests for the Godseye software
+ * @copyright 2020 dev.io
+ * 
+ */
+
+
 // IMPORTS
 const express = require('express')
 const app = express()
@@ -19,6 +29,7 @@ const parentAuth = require('./src/auth/parent/parent_auth new')
 
 // API FUNCTIONS
 const GodseyeSTREAM = require('./src/api/feed')
+const getTeachers = require('./src/api/teachers')
 
 // SESSION STORE
 const sessionStore = new MySQLStore(DBMeta.RDS)
@@ -50,38 +61,17 @@ app.use('/', express.static('public'))
 
 // GET HANDLERS
 // PARENT STREAMER
+
 app.get('/parents/feed/:cameraId', (req, res, next) => {
 	if (!req.session.user) {
 		res.json({ failure: { reason: 'please login first' } })
 	} else {
-		if (req.params.cameraId) {
-			getUserCamera(req.session.user.parentId)
-				.then((cameraData) => {
-					req.session.user.cameraData = cameraData
-				})
-				.then(() => {
-					let selectedCamera = req.session.user.cameraData.filter(
-						(obj) => obj.cameraId == req.params.cameraId
-					)[0]
-					selectedCamera
-						? GodseyeSTREAM(selectedCamera.camera_link, res).catch(
-								(err) =>
-									res.json({
-										failure: { reason: err },
-									})
-						  )
-						: res.json({
-								failure: {
-									reason: 'access denied to this resource',
-								},
-						  })
-				})
-		}
+		GodseyeSTREAM(req.params.cameraId, req.session.user.parentId, res)
 	}
 })
 
 // POST HANDLERS
-// PARENT AUTHENTICATION ENDPOINTS
+// PARENT ENDPOINTS
 app.post('/parents/login', (req, res, next) => {
 	if (req.session.user) {
 		res.json({
@@ -103,6 +93,18 @@ app.post('/parents/logout', (req, res, next) => {
 	res.json(parentAuth.logout(req))
 })
 
+app.post('/parents/info/teachers', (req, res, next) => {
+	req.session.user
+		? getTeachers()
+				.then((results) =>
+					res.json({
+						status: { success: 'Fetched teachers successfully' },
+						data: results,
+					})
+				)
+				.catch((err) => res.json({ status: { failure: err } }))
+		: res.json({ status: { failure: 'please login first' } })
+})
 /*
  ADMIN ONLY ENDPOINTS
  */
@@ -154,7 +156,6 @@ app.post('/admin/update', (req, res, next) => {
 				.updateAdmin(
 					req.body.firstName,
 					req.body.lastName,
-					req.body.password,
 					req.body.email,
 					req.body.phoneNumber
 				)
@@ -188,21 +189,13 @@ app.post('/admin/parents/add', (req, res, next) => {
 					req.body.nChildren,
 					req.body.email
 				)
-				.then((result) =>
-					res.json({
-						status: { success: 'Parent account created' },
-					})
-				)
-				.catch((err) =>
-					res.json({
-						status: { failure: err },
-					})
-				)
+				.then((result) => res.json(result))
+				.catch((err) => res.json(err))
 })
 
 // Update parent
 app.post('/admin/parents/update', (req, res, next) => {
-	req.session.admin
+	!req.session.admin
 		? res.json({ status: { failure: 'No active admin session found' } })
 		: adminAuth.parents
 				.updateParent(
@@ -225,7 +218,7 @@ app.post('/admin/parents/update', (req, res, next) => {
 
 //Remove Parent
 app.post('/admin/parents/remove', (req, res, next) => {
-	req.session.admin
+	!req.session.admin
 		? res.json({ status: { failure: 'No active admin session found' } })
 		: adminAuth.parents
 				.removeParent(req.body.email)
@@ -235,6 +228,38 @@ app.post('/admin/parents/remove', (req, res, next) => {
 				.catch((err) => res.json({ status: { failure: err } }))
 })
 
+// WARD OPERATIONS
+// Add Ward
+app.post('/admin/wards/add', (req, res, next) => {
+	!req.session.admin
+		? res.json({ status: { failure: 'No active admin session found' } })
+		: adminAuth.wards
+				.addWard(
+					req.body.wardAge,
+					req.body.wardFirstName,
+					req.body.wardLastName,
+					req.body.parentId,
+					req.body.classId
+				)
+				.then((obj) => res.json(obj))
+				.catch((err) => res.json(err))
+})
+
+// Remove Ward
+app.post('/admin/wards/remove', (req, res, next) => {
+	!req.session.admin
+		? res.json({ status: { failure: 'No active admin session found' } })
+		: adminAuth.wards
+				.removeWard(
+					req.body.wardAge,
+					req.body.wardFirstName,
+					req.body.wardLastName,
+					req.body.parentId,
+					req.body.classId
+				)
+				.then((obj) => res.json(obj))
+				.catch((err) => res.json(err))
+})
 
 // CAMERA SERVER REGISTRATION ENDPOINTS : ALL OPS ARE ADMIN AUTHENTICATED BEFORE EXECUTION
 // UPDATE CAMERA_LINK
