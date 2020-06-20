@@ -131,96 +131,108 @@ app.post('/admin/logout', (req, res, next) => {
 
 // Admin Signup
 app.post('/admin/signup', (req, res, next) => {
-	adminAuth.admins
-		.addAdmin(
-			req.body.firstName,
-			req.body.lastName,
-			req.body.password,
-			req.body.email,
-			req.body.phoneNumber
-		)
-		.then((results) => {
-			res.json({ status: { success: 'Admin account added' } })
-		})
-		.catch((err) => res.json({ status: { failure: err } }))
+	!req.session.admin
+		? res.json({ status: { failure: 'No active admin session found' } })
+		: adminAuth.admins
+				.addAdmin(
+					req.body.firstName,
+					req.body.lastName,
+					req.body.password,
+					req.body.email,
+					req.body.phoneNumber
+				)
+				.then((results) => {
+					res.json({ status: { success: 'Admin account added' } })
+				})
+				.catch((err) => res.json({ status: { failure: err } }))
 })
 
 app.post('/admin/update', (req, res, next) => {
-	adminAuth.admins
-		.updateAdmin(
-			req.body.firstName,
-			req.body.lastName,
-			req.body.password,
-			req.body.email,
-			req.body.phoneNumber
-		)
-		.then((results) => {
-			res.json({ status: { success: 'Admin account updated' } })
-		})
-		.catch((err) => res.json({ status: { failure: err } }))
+	!req.session.admin
+		? res.json({ status: { failure: 'No active admin session found' } })
+		: adminAuth.admins
+				.updateAdmin(
+					req.body.firstName,
+					req.body.lastName,
+					req.body.password,
+					req.body.email,
+					req.body.phoneNumber
+				)
+				.then((results) => {
+					res.json({ status: { success: 'Admin account updated' } })
+				})
+				.catch((err) => res.json({ status: { failure: err } }))
 })
 
 // Remove admin
 app.post('/admin/remove', (req, res, next) => {
-	adminAuth.admins
-		.removeAdmin(req.body.email)
-		.then((results) => {
-			res.json({ status: { success: 'Admin account removed' } })
-		})
-		.catch((err) => res.json({ status: { failure: err } }))
+	!req.session.admin
+		? res.json({ status: { failure: 'No active admin session found' } })
+		: adminAuth.admins
+				.removeAdmin(req.body.email)
+				.then((results) => {
+					res.json({ status: { success: 'Admin account removed' } })
+				})
+				.catch((err) => res.json({ status: { failure: err } }))
 })
 
 // Add a parent
 app.post('/admin/parents/add', (req, res, next) => {
-	adminAuth.parents
-		.addParent(
-			req.body.firstName,
-			req.body.lastName,
-			req.body.password,
-			req.body.nChildren,
-			req.body.email
-		)
-		.then((result) =>
-			res.json({
-				status: { success: 'Parent account created' },
-			})
-		)
-		.catch((err) =>
-			res.json({
-				status: { failure: err },
-			})
-		)
+	!req.session.admin
+		? res.json({ status: { failure: 'No active admin session found' } })
+		: adminAuth.parents
+				.addParent(
+					req.body.firstName,
+					req.body.lastName,
+					req.body.password,
+					req.body.nChildren,
+					req.body.email
+				)
+				.then((result) =>
+					res.json({
+						status: { success: 'Parent account created' },
+					})
+				)
+				.catch((err) =>
+					res.json({
+						status: { failure: err },
+					})
+				)
 })
 
 // Update parent
 app.post('/admin/parents/update', (req, res, next) => {
-	adminAuth.parents
-		.updateParent(
-			req.body.firstName,
-			req.body.lastName,
-			req.body.email,
-			req.body.nChildren
-		)
-		.then((result) =>
-			res.json({
-				status: { success: 'Parent account updated' },
-			})
-		)
-		.catch((err) =>
-			res.json({
-				status: { failure: err },
-			})
-		)
+	req.session.admin
+		? res.json({ status: { failure: 'No active admin session found' } })
+		: adminAuth.parents
+				.updateParent(
+					req.body.firstName,
+					req.body.lastName,
+					req.body.email,
+					req.body.nChildren
+				)
+				.then((result) =>
+					res.json({
+						status: { success: 'Parent account updated' },
+					})
+				)
+				.catch((err) =>
+					res.json({
+						status: { failure: err },
+					})
+				)
 })
 
 //Remove Parent
 app.post('/admin/parents/remove', (req, res, next) => {
-	adminAuth.parents
-		.removeParent(req.body.email)
-		.then((results) => {
-			res.json({ status: { success: 'Parent account removed' } })
-		})
-		.catch((err) => res.json({ status: { failure: err } }))
+	req.session.admin
+		? res.json({ status: { failure: 'No active admin session found' } })
+		: adminAuth.parents
+				.removeParent(req.body.email)
+				.then((results) => {
+					res.json({ status: { success: 'Parent account removed' } })
+				})
+				.catch((err) => res.json({ status: { failure: err } }))
 })
 
 
