@@ -19,7 +19,6 @@ const parentAuth = require('./src/auth/parent/parent_auth new')
 
 // API FUNCTIONS
 const GodseyeSTREAM = require('./src/api/feed')
-const admin_auth = require('./src/auth/admin/admin_auth')
 
 // SESSION STORE
 const sessionStore = new MySQLStore(DBMeta.RDS)
@@ -181,13 +180,49 @@ app.post('/admin/parents/add', (req, res, next) => {
 			req.body.nChildren,
 			req.body.email
 		)
-		.then((result) => res.json(result))
+		.then((result) =>
+			res.json({
+				status: { success: 'Parent account created' },
+			})
+		)
 		.catch((err) =>
 			res.json({
 				status: { failure: err },
 			})
 		)
 })
+
+// Update parent
+app.post('/admin/parents/update', (req, res, next) => {
+	adminAuth.parents
+		.updateParent(
+			req.body.firstName,
+			req.body.lastName,
+			req.body.email,
+			req.body.nChildren
+		)
+		.then((result) =>
+			res.json({
+				status: { success: 'Parent account updated' },
+			})
+		)
+		.catch((err) =>
+			res.json({
+				status: { failure: err },
+			})
+		)
+})
+
+//Remove Parent
+app.post('/admin/parents/remove', (req, res, next) => {
+	adminAuth.parents
+		.removeParent(req.body.email)
+		.then((results) => {
+			res.json({ status: { success: 'Parent account removed' } })
+		})
+		.catch((err) => res.json({ status: { failure: err } }))
+})
+
 
 // CAMERA SERVER REGISTRATION ENDPOINTS : ALL OPS ARE ADMIN AUTHENTICATED BEFORE EXECUTION
 // UPDATE CAMERA_LINK
