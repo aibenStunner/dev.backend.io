@@ -9,17 +9,20 @@ const MySQLStore = require('express-mysql-session')(session)
 // SERVER METADATA
 const DBMeta = require('./src/db/credentials.json')
 
-// IMPORTED FUNCTIONS
-const parentAuth = require('./src/auth/parent/parent_auth new')
-const GodseyeSTREAM = require('./src/api/feed')
-const getUserCamera = require('./src/api/user_cameras')
+// ENVIRONMENT VARIABLES
+const port = process.env.PORT || 5000
+
+// AUTH OBJECTS
 const hubAuth = require('./src/auth/hub/hub_auth')
+const adminAuth = require('./src/auth/admin/admin_auth')
+const parentAuth = require('./src/auth/parent/parent_auth new')
+
+// API FUNCTIONS
+const GodseyeSTREAM = require('./src/api/feed')
+const admin_auth = require('./src/auth/admin/admin_auth')
 
 // SESSION STORE
 const sessionStore = new MySQLStore(DBMeta.RDS)
-
-// ENVIRONMENT VARIABLES
-const port = process.env.PORT || 5000
 
 // MIDDLEWARE
 app.use(
@@ -101,14 +104,77 @@ app.post('/parents/logout', (req, res, next) => {
 	res.json(parentAuth.logout(req))
 })
 
-
-/**
- * ADMIN ONLY ENDPOINTS
+/*
+ ADMIN ONLY ENDPOINTS
  */
 
-app.post('/admin/parents/signup', (req, res, next) => {
-	parentAuth
-		.signup(
+// Admin Login
+app.post('/admin/login', (req, res, next) => {
+	req.session.admin
+		? res.json({ status: { illegal: 'Admin already logged in' } })
+		: adminAuth.admins
+				.adminLogin(req.body.email, req.body.password)
+				.then((results) => {
+					req.session.admin = true
+					res.json({ status: { success: 'Admin logged in' } })
+				})
+				.catch((err) =>
+					res.json({
+						status: { failure: err },
+					})
+				)
+})
+
+// Admin Logout
+app.post('/admin/logout', (req, res, next) => {
+	res.json(adminAuth.admins.adminLogout(req))
+})
+
+// Admin Signup
+app.post('/admin/signup', (req, res, next) => {
+	adminAuth.admins
+		.addAdmin(
+			req.body.firstName,
+			req.body.lastName,
+			req.body.password,
+			req.body.email,
+			req.body.phoneNumber
+		)
+		.then((results) => {
+			res.json({ status: { success: 'Admin account added' } })
+		})
+		.catch((err) => res.json({ status: { failure: err } }))
+})
+
+app.post('/admin/update', (req, res, next) => {
+	adminAuth.admins
+		.updateAdmin(
+			req.body.firstName,
+			req.body.lastName,
+			req.body.password,
+			req.body.email,
+			req.body.phoneNumber
+		)
+		.then((results) => {
+			res.json({ status: { success: 'Admin account updated' } })
+		})
+		.catch((err) => res.json({ status: { failure: err } }))
+})
+
+// Remove admin
+app.post('/admin/remove', (req, res, next) => {
+	adminAuth.admins
+		.removeAdmin(req.body.email)
+		.then((results) => {
+			res.json({ status: { success: 'Admin account removed' } })
+		})
+		.catch((err) => res.json({ status: { failure: err } }))
+})
+
+// Add a parent
+app.post('/admin/parents/add', (req, res, next) => {
+	adminAuth.parents
+		.addParent(
 			req.body.firstName,
 			req.body.lastName,
 			req.body.password,

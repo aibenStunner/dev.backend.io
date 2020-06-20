@@ -32,15 +32,18 @@ function adminLogin(email, password) {
 	})
 }
 
+function adminLogout(req) {
+	if (req.session.admin) {
+		req.session.destroy((err) => {
+			if (err) throw err
+		})
+		return { status: { success: 'Admin session ended' } }
+	} else {
+		return { status: { failure: 'No active admin session found' } }
+	}
+}
+
 // Add an admin
-/**
- *
- * @param {String} firstName
- * @param {String} lastName
- * @param {String} password
- * @param {String} email
- * @param {String} phoneNumber
- */
 function addAdmin(firstName, lastName, password, email, phoneNumber) {
 	return new Promise((resolve, reject) => {
 		GodseyeSQL.executeQuery(
@@ -147,7 +150,9 @@ function removeParent(email) {
 	})
 }
 
+// Ward Operations
+
 module.exports = {
-	admins: { addAdmin, updateAdmin, removeAdmin },
+	admins: { adminLogin, adminLogout, addAdmin, updateAdmin, removeAdmin },
 	parents: { addParent, updateParent, removeParent },
 }

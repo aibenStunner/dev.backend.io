@@ -11,12 +11,15 @@ function login(email, password) {
 	return new Promise((resolve, reject) => {
 		GodseyeSQL.executeQuery(
 			`SELECT * from parent_ward_class WHERE email='${email}'`
-		).then((result) => {
-			if (!result) {
-				reject({ failure: { reason: 'User not found' } })
-			} else {
-				HashSuite.comparePassword(password, result[0].password).then(
-					(isMatch) => {
+		)
+			.then((result) => {
+				if (!result) {
+					reject({ failure: { reason: 'User not found' } })
+				} else {
+					HashSuite.comparePassword(
+						password,
+						result[0].password
+					).then((isMatch) => {
 						if (isMatch) {
 							let record = {
 								parentId: result[0].parentId,
@@ -57,10 +60,10 @@ function login(email, password) {
 								status: { failure: 'Wrong password' },
 							})
 						}
-					}
-				)
-			}
-		})
+					})
+				}
+			})
+			.catch((err) => reject({ status: { failure: err } }))
 	})
 }
 
