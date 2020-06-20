@@ -1,12 +1,12 @@
 /**
  * @name Godseye API
  * @author dev.io
- * @description This is the Node.js backend and REST API that handles all authentication, 
+ * @description This is the Node.js backend and REST API that handles all authentication,
  * 				information and streaming requests for the Godseye software
  * @copyright 2020 dev.io
- * 
+ * @version 1.0.0
+ *
  */
-
 
 // IMPORTS
 const express = require('express')
