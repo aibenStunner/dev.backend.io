@@ -1,24 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Godseye</title>
-  </head>
+<head>
+	<title>Welcome to GodsEye</title>
 
-  <body onload="populateCameras()">
-    <main>
-      <div id="video-player">
-        <img src="" width="600" height="500" alt="" />
-        <p>Please select a camera to begin</p>
-      </div>
-    </main>
-    <div class="sidebar">
-      <div id="camera-select">
-        <h2>Classrooms</h2>
-        <h3>Select a camera to view live feed:</h3>
-      </div>
-    </div>
-    <script src="main.js"></script>
-  </body>
+	<meta charset="utf-8" />
+	<meta
+			name="description"
+			content="Godseye - A school surveillance system taking the world by storm."
+	/>
+	<meta name="author" content="Edmund Amanor" />
+	<meta name="keywords" content="godseye login, godseye signup" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" href="css/mobile.css" />
+	<link rel="stylesheet" href="css/desktop.css" />
+
+	<link
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap"
+			rel="stylesheet"
+	/>
+</head>
+
+<body onload="populateCameras()">
+<!--SIDE NAV FOR MOBILE-->
+
+<div id="flex-container">
+
+	<div id="child1">
+		<div id="grand-child1">
+			<h1>
+				<a href="./">Gods<span>Eye</span> 👀</a>
+			</h1>
+			<nav>
+				<a href="support.html">Contact Us</a>
+			</nav>
+		</div>
+
+		<div id="grand-child2">
+			<!-- CAROUSEL -->
+			<section class="carousel">
+				<div id="video-player">
+					<img src="" alt="" />
+					<div id="spinner"></div>
+					<p>Please select a camera to begin</p>
+				</div>
+			</section>
+		</div>
+	</div>
+
+
+	<div class="sidebar">
+		<div id="camera-select">
+			<h2>Classrooms</h2>
+			<h3>Select a camera to view live feed:</h3>
+		</div>
+	</div>
+
+</div> <!-- end flex-container -->
+
+<footer>
+	<div class="footer-nav">
+		<a href="index.html">Home</a>
+		<a href="about.html">About</a>
+		<a href="support.html">Support</a>
+	</div>
+
+	<div class="app-store-links">
+		<div></div>
+		<div></div>
+	</div>
+</footer>
+
+
+<script src="./js/main.js"></script>
+</body>
 </html>
