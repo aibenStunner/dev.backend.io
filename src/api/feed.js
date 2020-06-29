@@ -7,9 +7,15 @@ const GodseyeSQL = require('../db/sql_promise')
  * @param {Response} res The Writable Stream to pipe the response through
  */
 function getFeed(cameraId, parentId, res) {
-	GodseyeSQL.executeQuery(
-		`SELECT camera_link FROM parent_ward_class WHERE cameraId = ${cameraId} AND parentId=${parentId}`
-	)
+	let magic =
+		parseInt(cameraId) >= 5000
+			? GodseyeSQL.executeQuery(
+					`SELECT camera_link FROM public_camera_location WHERE camera_ID = ${cameraId}`
+			  )
+			: GodseyeSQL.executeQuery(
+					`SELECT camera_link FROM parent_ward_class WHERE cameraId = ${cameraId} AND parentId=${parentId}`
+			  )
+	magic
 		.then((results) => {
 			let url =
 				results && results[0]
@@ -33,7 +39,6 @@ function getFeed(cameraId, parentId, res) {
 }
 
 function getFeedWithToken(token, res) {
-	
 	getFeed(cameraId, parentId, res)
 }
 

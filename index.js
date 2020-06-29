@@ -30,6 +30,7 @@ const parentAuth = require('./src/auth/parent/parent_auth new')
 // API FUNCTIONS
 const GodseyeSTREAM = require('./src/api/feed')
 const getTeachers = require('./src/api/teachers')
+const getPublicCameras = require('./src/api/public_cameras')
 
 // SESSION STORE
 const sessionStore = new MySQLStore(DBMeta.RDS)
@@ -106,6 +107,22 @@ app.post('/parents/info/teachers', (req, res, next) => {
 				.catch((err) => res.json({ status: { failure: err } }))
 		: res.json({ status: { failure: 'please login first' } })
 })
+
+app.post('/parents/info/public_cameras', (req, res, next) => {
+	req.session.user
+		? getPublicCameras()
+				.then((results) =>
+					res.json({
+						status: {
+							success: 'Fetched public camera IDs successfully',
+						},
+						data: results,
+					})
+				)
+				.catch((err) => res.json({ status: { failure: err } }))
+		: res.json({ status: { failure: 'please login first' } })
+})
+
 /*
  ADMIN ONLY ENDPOINTS
  */
