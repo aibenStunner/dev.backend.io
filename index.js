@@ -1,5 +1,5 @@
 /**
- * @name Godseye API
+ * @name GodseyeAPI
  * @author dev.io
  * @description This is the Node.js backend and REST API that handles all authentication,
  * 				information and streaming requests for the Godseye software

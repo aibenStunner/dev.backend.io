@@ -32,4 +32,9 @@ function getFeed(cameraId, parentId, res) {
 		.catch((err) => res.json(err))
 }
 
+function getFeedWithToken(token, res) {
+	
+	getFeed(cameraId, parentId, res)
+}
+
 module.exports = getFeed
