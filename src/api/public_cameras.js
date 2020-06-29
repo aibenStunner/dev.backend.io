@@ -1,11 +1,9 @@
 const GodseyeSQL = require('../db/sql_promise')
 
-function fetchTeachers() {
+function getPublicCameraIDs() {
 	return new Promise((resolve, reject) => {
-		GodseyeSQL.executeQuery(`SELECT * FROM teacher`)
+		GodseyeSQL.executeQuery(`SELECT camera_ID FROM teacher`)
 			.then((results) => resolve(results))
 			.catch((err) => reject(err))
 	})
 }
-
-module.exports = fetchTeachers
