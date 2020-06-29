@@ -50,6 +50,7 @@ app.use(
 		name: 'godseye.lash',
 		cookie: {
 			SameSite: 'lax',
+			maxAge: 1000 * 60 * 60 * 24 * 30,
 		},
 	})
 )
