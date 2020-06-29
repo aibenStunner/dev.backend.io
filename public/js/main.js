@@ -1,4 +1,4 @@
-const server = 'http://localhost:5000'
+const server = window.location.origin
 
 function hideAllPages() {
 	document
@@ -69,8 +69,9 @@ const loadFeedPage = () => {
 const populateFeedPage = () => {
 	const user = JSON.parse(localStorage.getItem('user'))
 
-	let parentName = document.querySelector('#parent-name')
-	parentName.innerText = `${user.firstName} ${user.lastName}`
+	document.querySelectorAll('#parent-name').forEach((elem) => {
+		elem.innerText = `${user.firstName} ${user.lastName}`
+	})
 
 	let childBox = document.querySelector('.child-box')
 	user.data.forEach((obj) => {
@@ -120,6 +121,17 @@ const loadVideoPlayer = (event) => {
 
 		hideAllPages()
 		let videoPlayer = document.querySelector('#player')
+
+		let childrenBox = document.querySelector('#children-box')
+
+		let newConveyor = childrenBox.cloneNode(true)
+
+		newConveyor.className += ' video'
+
+		console.log(newConveyor)
+
+		videoPlayer.appendChild(newConveyor)
+
 		videoPlayer.style.display = 'block'
 
 		image.onerror = (err) => {
