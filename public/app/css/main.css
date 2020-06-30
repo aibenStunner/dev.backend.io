@@ -195,27 +195,27 @@ header > #logo {
 }
 
 .child-box:nth-of-type(n + 1) {
-	background-image: url(/img/black-thread.png);
+	background-image: url(../img/black-thread.png);
 	background-color: rgba(230, 73, 0, 0.527);
 }
 
 .child-box:nth-of-type(2n + 1) {
-	background-image: url(/img/brushed-alum.png);
+	background-image: url(../img/brushed-alum.png);
 	background-color: rgba(0, 101, 184, 0.801);
 }
 
 .child-box:nth-of-type(3n + 1) {
-	background-image: url(/img/flowers.png);
+	background-image: url(../img/flowers.png);
 	background-color: rgba(164, 17, 201, 0.527);
 }
 
 .child-box:nth-of-type(4n + 1) {
-	background-image: url(/img/crisp-paper-ruffles.png);
+	background-image: url(../img/crisp-paper-ruffles.png);
 	background-color: rgba(218, 186, 9, 0.527);
 }
 
 .child-box:nth-of-type(5n + 1) {
-	background-image: url(/img/fabric-plaid.png);
+	background-image: url(../img/fabric-plaid.png);
 	background-color: rgba(7, 124, 60, 0.527);
 }
 
