@@ -34,12 +34,7 @@ $(document).ready(function(){
         } else if ($(window).scrollTop() >= $('#servicesSection').offset().top - $(window).height()/2 ) {
             $('.nav-link').removeClass('active');
             $('#servicesLink').addClass('active');
-        } else if ($(window).scrollTop() >= $('#teamSection').offset().top - $(window).height()/2 ) {
-            $('.nav-link').removeClass('active');
-            $('#teamLink').addClass('active');
-        } else if ($(window).scrollTop() >= $('#portfolioSection').offset().top - $(window).height()/2 ) {
-            $('.nav-link').removeClass('active');
-            $('#portfolioLink').addClass('active');
+        
         } else if ($(window).scrollTop() >= $('#aboutSection').offset().top - $(window).height()/2 ) {
             $('.nav-link').removeClass('active');
             $('#aboutLink').addClass('active');
