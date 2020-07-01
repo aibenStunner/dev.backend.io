@@ -1,5 +1,5 @@
 # God'sEye :eyes: Hardware Development
-A Raspberry Pi 4 Computer was used for the hardware development of this project. Live camera feeds are tunneled from the Pi Computer to a live server.\
+A Raspberry Pi 4 Computer was used for the hardware development of this project. Live camera feeds are tunneled from the Pi Computer to a live server.
 
 This branch contains:
     
@@ -9,7 +9,7 @@ This branch contains:
 
     3.  the bash scripts that run on the Raspberry Pi.
 
-    4.  the script python script that communicates with the backend server.
+    4.  the python script that communicates with the backend server.
 
 ## Documentation :books:
 
