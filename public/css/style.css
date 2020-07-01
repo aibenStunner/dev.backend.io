@@ -9,11 +9,11 @@ a {
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
 } 
-.page{
-  min-width: auto;
-}
 
-body {
+
+
+
+html,body {
   
   overflow-x: hidden;
   font-family: "Roboto";
@@ -23,8 +23,7 @@ body {
   font-weight: 400;
   margin: 0;
   padding: 0;
-
-
+ 
 
 }
 .services-section{
@@ -93,14 +92,18 @@ body {
 .orbitron.black-orb::after {
   background-color: #000;
 }
-.nav-bar {
-  position: fixed;
-  z-index: 100;
-  height: 88px;
+
+
+
+.nav-bar  {
+  
+  
+  height: 85px;
   top: 0;
   left: 0;
   right: 0;
-  padding: 0 6%;
+  padding: 0;
+  background-color: transparent;
 }
 .nav-bar.scrolled {
   height: 80px;
@@ -121,13 +124,36 @@ body {
   transition: 0.4s ease;
   cursor: pointer;
 }
-.nav-links-container {
+
+.nav-logo:hover{
+color: rgb(199, 199, 199);
+}
+
+
+.a{
+  color: black;
+}
+
+
+.navbar-right {
   position: absolute;
   top: 50%;
-  right: 3%;
+  right: 4%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+          text-decoration: none;
 }
+
+.navbar-default .navbar-nav>li>a {
+    color: rgb(0, 0, 0);
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a.active 
+{
+
+    color: rgb(255, 255, 255);
+}
+
 .nav-link {
   color: rgb(0, 0, 0);
   font-size: 14px;
@@ -135,6 +161,8 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 500;
+    margin: 20px auto ;
+  text-decoration: none;
   padding: 0 12px;
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
@@ -142,23 +170,19 @@ body {
 .loginlink{
    color: rgb(7, 7, 7);
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
   cursor: pointer;
-  font-weight: 500;
-  padding: 0 12px;
-  -webkit-transition: 0.4s ease;
-  transition: 0.4s ease;
-    display: inline-block;
-  position: relative;
-  margin: 50px auto ;
+ 
+
+  margin: 20px auto ;
   padding: 7px 7px;
   border: 2px solid;
   
   
 }
 .loginlink:hover{
-background-color: #ffffff;
+color: #ffffff;
 
 }
 .nav-link.active,
@@ -167,12 +191,13 @@ background-color: #ffffff;
 }
 .top-section {
   height: 100vh;
-  min-height:10vh;
-  background: url("571c1de6-aaa0-417a-a6e4-a7d0ec06045b_200x200.svg") no-repeat center;
+  width:  100%;
+
+  background: url("571c1de6-aaa0-417a-a6e4-a7d0ec06045b_200x200.svg") no-repeat center ;
   background-size: 55%;
-  position: sticky;
-  background-position-y: -2px;
-  background-attachment: fixed;
+  position: relative;
+  display: flex;
+  
   
 }
  
@@ -214,7 +239,7 @@ opacity: 0.58;
   
   line-height: 28px;
   position: relative;
-  top: 440px;
+  top: 600px;
   
 }
 .top-small-text {
@@ -337,13 +362,14 @@ opacity: 0.58;
   color: #000;
   line-height: 1;
   font-size: 80px;
-  display: flex;
+  display: inline-flex;
   position: relative;
-  left: 298px;
-  top: 30px;
+  right: 80px;
+  top: 80px;
   cursor: pointer;
   flex: 1 0 auto;
-
+width: fit-content;
+height: fit-content;
 }
 
 .icon:hover {
@@ -355,7 +381,9 @@ opacity: 0.58;
 position: relative;
 font-size: 80px;
 top: 10px;
-  left: 10px;
+  left: 57px;
+  width: fit-content;
+  height: fit-content  ;
 }
 
 
@@ -747,6 +775,8 @@ color: white;
     padding: 15px 35px;
   }
 }
+
+
 @media screen and (max-width: 1100px) {
   .big-text {
     font-size: 45px;
@@ -894,15 +924,40 @@ color: white;
     background-size: 260px 100% !important;
   }
 }
-@media screen and (max-width: 500px) {
+@media (max-width:420px){
+  .nav-logo{
+    left: 75px;
+  }
+
+  .top-section{
+    background-size: 130%;
+  }
+
+  .top-text {
+  color: rgb(0, 0, 0);
+  
+  
+  top: 700px;
+  
+}
+.godseye,.godseye2{
+  display: none;
+}
+  
   .big-text {
-    font-size: 36px;
-    line-height: 46px;
-    letter-spacing: 6px;
-    margin-bottom: 22px;
+    font-size: 34px;
+    line-height: 30px;
+    letter-spacing: 2.5px;
+    margin-bottom: 20px;
+  }
+
+  .top-small-text{
+    font-size: 15px;
+    line-height: 20px;
   }
   .orbitron {
-    margin-bottom: 22px;
+    margin-top: 22px;
+    margin-bottom: 50px;
   }
   .about-us-section {
     padding: 80px 0 0;
@@ -926,7 +981,7 @@ color: white;
   
   background: transparent no-repeat;
   position: sticky;
-  top: 750px;
+  top: 660px;
   background-attachment: fixed;
 
 }
@@ -939,10 +994,10 @@ color: white;
 	height: 100vh;
 	min-height: 600px;
   background: transparent;
-  left: 180px;
+  left: 170px;
   bottom: 91px;
   opacity: 0.98;
-  background-attachment: fixed;
+ 
   
 }
 
