@@ -2,6 +2,8 @@
 
 ![version](https://img.shields.io/static/v1?label=version&message=1.0.19&color=important&style=for-the-badge) ![status](https://img.shields.io/static/v1?label=status&message=production&color=blue&style=for-the-badge) ![backend](https://img.shields.io/static/v1?label=&message=Node.JS&color=success&style=for-the-badge&logo=Node.js) ![database](https://img.shields.io/static/v1?label=&message=MySQL&color=turquoise&style=for-the-badge&logo=mysql)
 
+Find it live at: [Godseye Backend](http://godseye-env.eba-gpcz6ppk.us-east-2.elasticbeanstalk.com/)
+
 This repository contains:
 
     1.  the source code of the server which powers the Godseye platform.
@@ -25,6 +27,16 @@ The database engine used for the backend is MySQL. All fields necessary for look
 have been indexed.
 
 Password salting and hashing was done with bcrypt.
+
+## Hardware Development
+
+A Raspberry PI 4 computer with two web cameras was used as a media server for the hardware development of this project.
+
+Live camera feeds are tunneled from the PI Computer with ngrok.
+
+Ngrok cloud service accepts traffic on a public address and relays that traffic through to the ngrok process running on the PI and then on to the local address specified for a requested camera's feed.
+
+Information on how this can be setup can be found [here](https://gitlab.com/dev.io/dev.backend.io/-/blob/hardwareDev/docs.pdf).
 
 ## Production
 
