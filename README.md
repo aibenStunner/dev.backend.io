@@ -58,8 +58,6 @@ Live camera feeds are tunneled from the PI Computer with ngrok.
 
 Ngrok cloud service accepts traffic on a public address and relays that traffic through to the ngrok process running on the PI and then on to the local address specified for a requested camera's feed.
 
-Information on how this can be setup can be found [here](https://gitlab.com/dev.io/dev.backend.io/-/blob/hardwareDev/docs.pdf).
-
 ### Documentation :books:
 
 Guidelines to how this setup can be done are available <a href="https://gitlab.com/dev.io/dev.backend.io/-/blob/hardwareDev/docs.pdf">here</a>.
