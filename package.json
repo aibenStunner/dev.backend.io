@@ -1,5 +1,34 @@
 {
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+	"name": "dev.backend.io",
+	"version": "1.0.0",
+	"description": "The NodeJS platform on which Godseye runs.",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@gitlab.com/dev.io/dev.backend.io.git"
+	},
+	"keywords": [
+		"Godseye",
+		"dev.io"
+	],
+	"author": "Kevin Nene Otuteye",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://gitlab.com/dev.io/dev.backend.io/issues"
+	},
+	"homepage": "https://gitlab.com/dev.io/dev.backend.io#readme",
+	"dependencies": {
+		"bcrypt": "^4.0.1",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-mysql-session": "^2.1.4",
+		"express-session": "^1.17.1",
+		"mysql": "^2.18.1",
+		"node-fetch": "^2.6.0",
+		"nodemon": "^2.0.4"
+	}
 }

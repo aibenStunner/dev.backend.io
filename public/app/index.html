@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/form.css" />
+
+    <title>Godseye Web</title>
+</head>
+
+<body 
+onload="loadParticles()">
+    <div class="bg-layer"></div>
+    <div class="bg-layer"></div>
+    <div id="particles-js" class="bg-layer"></div>
+
+    <header class="animate__animated animate__fadeInDown">
+        <h1>Gods<span>Eye</span></h1>
+        <div id="logo"></div>
+    </header>
+
+    <article class="page" id="login">
+        <form method="get" action="javascript:loginParent();" id="login-form"
+            class="login-form animate__animated animate__flipInY" autocomplete="off" role="main">
+            <p id="errorMsg" class="animate__animated animate__flipInX"></p>
+
+            <input id="email" type="email" spellcheck="false" class="text" name="email" placeholder="Email" tabindex="1"
+                required />
+
+            <input type="checkbox" name="show-password" class="show-password a11y-hidden" id="show-password" />
+
+            <label class="label-show-password" for="show-password">
+                <span tabindex="3">Show Password</span>
+            </label>
+
+            <input id="password" type="text" class="text" name="password" placeholder="Password" tabindex="2"
+                spellcheck="false" required />
+
+            <input type="submit" value="Log In" tabindex="4" />
+
+            <figure aria-hidden="true">
+                <div class="person-body"></div>
+                <div class="neck skin"></div>
+                <div class="head skin">
+                    <div class="eyes"></div>
+                    <div class="mouth"></div>
+                </div>
+                <div class="hair"></div>
+                <div class="ears"></div>
+                <div class="shirt-1"></div>
+                <div class="shirt-2"></div>
+            </figure>
+        </form>
+    </article>
+
+    <article class="page animate__animated animate__slideInUp" id="feeds">
+        <div class="panel title-bar">
+            <i class="fas fa-user"></i>
+            <h2> <span id="parent-name"></span></h2>
+            <i class="fas fa-sign-out-alt" onclick="logout()"></i>
+        </div>
+        <div id="children-box" class="panel">
+            <h2>Wards</h2>
+            <div class="conveyer">
+                <div class="child-box">
+                    <i class="fas fa-child"></i>
+                    <p></p>
+                    <i class="fas fa-school"></i>
+                    <p></p>
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <p></p><a href=""><i class="fas fa-phone"></i></a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- <div id="public-box" class="panel">
+            <h2>Public Cameras</h2>
+            <div class="conveyer">
+                <div class="child-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Playground</p>
+                    <p></p>
+                </div>
+            </div>
+        </div> -->
+
+    </article>
+
+    <article class="page animate__animated animate__fadeIn" id="player">
+        <div class="panel title-bar">
+            <i class="fas fa-user"></i>
+            <h2> <span id="parent-name"></span></h2>
+            <i class="fas fa-sign-out-alt" onclick="logout()"></i>
+        </div>
+        <div id="video">
+            <div class="errorMsg"></div>
+            <div id="spinner"></div>
+            <img src="" alt="">
+        </div>
+    </article>
+    <script src="./js/particles.js"></script>
+    <script src="https://kit.fontawesome.com/7b35108452.js" crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
