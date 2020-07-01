@@ -1,4 +1,18 @@
 
+/**
+ * 
+ * 
+ * 
+ * This Entire JavaScript code is used for the one-page 
+ * navigation scroll effect.
+ * 
+ * 
+ * 
+ */
+
+
+
+
 $(document).ready(function(){
     
     // Page scrolling function for the nav-links
@@ -21,9 +35,10 @@ $(document).ready(function(){
             $('.nav-bar').removeClass('scrolled')
         );
     });
+
     
-    // Setting the active nav-link based on the scroll position
-    // There is a better way to do this but this way works so I'll fix it later
+    // Setting the active nav-link based on the scrolled page position
+
     $(window).scroll(function(){
         if ($(window).scrollTop() >= $('#contactSection').offset().top - $(window).height()/2 ) {
             $('.nav-link').removeClass('active');
@@ -44,4 +59,5 @@ $(document).ready(function(){
         }
     });
     
-});
+}
+);
