@@ -152,7 +152,7 @@ body {
     display: inline-block;
   position: relative;
   margin: 50px auto ;
-  padding: 7px 30px;
+  padding: 7px 7px;
   border: 2px solid;
   
   
@@ -333,10 +333,28 @@ opacity: 0.58;
   margin: 0 auto 18px;
 }
 
+.icon{
+  color: #000;
+  line-height: 1;
+  font-size: 80px;
+  display: flex;
+  position: relative;
+  left: 298px;
+  top: 30px;
+  cursor: pointer;
+  flex: 1 0 auto;
+
+}
+
+.icon:hover {
+  color: rgb(59, 72, 190);
+  cursor: pointer;
+}
+
 .down-arrow{
 position: relative;
 font-size: 80px;
-top: 60px;
+top: 10px;
   left: 10px;
 }
 
