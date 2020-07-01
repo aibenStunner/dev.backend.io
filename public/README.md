@@ -5,16 +5,18 @@
 )
 
 
+
 <!-- GodsEye Home-Landing Page-->
-# What is GodsEye?
+# GodsEye Front-End
 
-**GODSEYE, is surveillance/security industry, that provides world-top-class innovative intelligent security and monitoring solutions supported by the best resolution “video capturing x sensing” technology for a safer tomorrow.**
+## What is GodsEye?
+* **GODSEYE, is a surveillance/security industry, that provides world-top-class innovative intelligent security and monitoring solutions supported by the best resolution “video capturing x sensing” technology for a safer tomorrow.**
 
-# Browser Tested And Supported
 
-![Browser logos](
- https://raw.githubusercontent.com/alrra/browser-logos/master/src/main-desktop-browser-logos.png
-)
+# Important 📢
+
+* Web Application for login not completed due to time-constraints. A link to download the APK which has login capabilities was provided as means to this problem
+
 
 
 # Feautures
@@ -22,6 +24,16 @@
 * Light-weight and simple
 * Useful plugin API
 * Compatible with Various browsers
+
+# Browser Tested And Supported
+
+![Browser logos](
+ https://raw.githubusercontent.com/alrra/browser-logos/master/src/main-desktop-browser-logos.png
+)
+
+# Live Web-link
+ 
+ * http://godseye-env.eba-gpcz6ppk.us-east-2.elasticbeanstalk.com/
 
 
 # Installation
