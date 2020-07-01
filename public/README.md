@@ -8,13 +8,14 @@
 
 <!-- GodsEye Home-Landing Page-->
 # GodsEye Front-End
-
+![version](https://img.shields.io/static/v1?label=version&message=1.0.20&color=important&style=for-the-badge) ![status](https://img.shields.io/static/v1?label=status&message=production&color=blue&style=for-the-badge) 
 ## What is GodsEye?
 * **GODSEYE, is a surveillance/security industry, that provides world-top-class innovative intelligent security and monitoring solutions supported by the best resolution “video capturing x sensing” technology for a safer tomorrow.**
 
 
-# Important 📢
 
+# Important 📢
+![Date](https://img.shields.io/static/v1?label=date&message=30/06/2020&color=green&style=for-the-badge)
 * Web Application for login not completed due to time-constraints. A link to download the APK which has login capabilities was provided as means to this problem
 
 
@@ -25,14 +26,40 @@
 * Useful plugin API
 * Compatible with Various browsers
 
+## Technical Details ⚙️
+
+This front-end was built with Visual-Studio-Code on Bootstrap-4 with design in mind.
+
+Its main functions are:
+* responsiveness
+ * customization
+
 # Browser Tested And Supported
 
 ![Browser logos](
  https://raw.githubusercontent.com/alrra/browser-logos/master/src/main-desktop-browser-logos.png
 )
 
+# Production 
+
+![platform](https://img.shields.io/static/v1?label=&message=Elastic%20Beanstalk&color=ff9900&style=for-the-badge&logo=Amazon-AWS) ![database](https://img.shields.io/static/v1?label=&message=Amazon%20RDS&color=232f3e&style=for-the-badge&logo=Amazon-AWS)
+
+In production, the server is deployed on Elastic Beanstalk (AWS) running on Node.js 12
+on 64bit Amazon Linux 2/5.1.0 on a single EC2 instance.
+
+The database and server computing units are within the same geographical area (USA East 2)
+and this leads to fast query results.
+
+On average the server reports a CPU utilization of 0.6% with a peak value of 4.6% so far.
+
+The database reports an average CPU utilization of 3% .
+
+
+
 # Live Web-link
- 
+ ![version](https://img.shields.io/static/v1?label=version&message=1.0.20&color=important&style=for-the-badge) ![status](https://img.shields.io/static/v1?label=status&message=production&color=blue&style=for-the-badge)
+
+Webiste can be found live at:
  * http://godseye-env.eba-gpcz6ppk.us-east-2.elasticbeanstalk.com/
 
 
