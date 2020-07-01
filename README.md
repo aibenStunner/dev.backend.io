@@ -19,6 +19,7 @@ Find it live at: [Godseye Backend](http://godseye-env.eba-gpcz6ppk.us-east-2.ela
 ### API Documentation :books:
 
 ![](https://img.shields.io/static/v1?label=&message=POSTMAN&color=ffab59&style=for-the-badge&logo=Postman)
+
 The REST API reference, guidelines for developers, FAQs and sample code for effectively consuming this API are available [here](https://documenter.getpostman.com/view/11664536/SzzdCLYo?version=latest).
 
 ### Technical Details ⚙️
