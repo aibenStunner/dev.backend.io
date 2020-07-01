@@ -1,2 +1,3 @@
-# dev.backend.io
-Supporting the Web and Mobile developers with sustainable and scalable database solutions.
+# God'sEye:eyes: Hardware Development
+A Raspberry Pi 4 Computer was used for the hardware development of this project. Live camera feeds are tunneled from the Pi Computer to a live server.\
+Information on how set this up can be found <a href="https://gitlab.com/dev.io/dev.backend.io/-/blob/hardwareDev/docs.pdf">here</a>.
