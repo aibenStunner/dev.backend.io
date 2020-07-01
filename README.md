@@ -13,7 +13,7 @@ This repository contains:
 
 ## Server Information
 
-![version](https://img.shields.io/static/v1?label=version&message=1.0.19&color=important&style=for-the-badge) ![status](https://img.shields.io/static/v1?label=status&message=production&color=blue&style=for-the-badge)
+![version](https://img.shields.io/static/v1?label=version&message=1.0.20&color=important&style=for-the-badge) ![status](https://img.shields.io/static/v1?label=status&message=production&color=blue&style=for-the-badge)
 
 Find it live at: [Godseye Backend](http://godseye-env.eba-gpcz6ppk.us-east-2.elasticbeanstalk.com/)
 
