@@ -4,13 +4,10 @@
 
 Find it live at: [Godseye Backend](http://godseye-env.eba-gpcz6ppk.us-east-2.elasticbeanstalk.com/)
 
-This repository contains:
+This branch contains:
 
     1.  the source code of the server which powers the Godseye platform.
-        (developers branch)
 
-    2.  the hardware code which runs on the Raspberry PI used as a camera hub
-        (hardwareDev branch)
 
 ## API Documentation
 
@@ -28,15 +25,6 @@ have been indexed.
 
 Password salting and hashing was done with bcrypt.
 
-## Hardware Development
-
-A Raspberry PI 4 computer with two web cameras was used as a media server for the hardware development of this project.
-
-Live camera feeds are tunneled from the PI Computer with ngrok.
-
-Ngrok cloud service accepts traffic on a public address and relays that traffic through to the ngrok process running on the PI and then on to the local address specified for a requested camera's feed.
-
-Information on how this can be setup can be found [here](https://gitlab.com/dev.io/dev.backend.io/-/blob/hardwareDev/docs.pdf).
 
 ## Production
 
