@@ -15,7 +15,7 @@ The REST API reference, guidelines for developers, FAQs and sample code for effe
 
 ## Technical Details
 
-This backend was built with Express on NodeJS.
+This backend was built with Express on NodeJS with security and performance in mind.
 
 Its functions are mainly authentication, session management, and live feed streaming.
 
@@ -31,3 +31,4 @@ The database and server computing units are within the same geographical area (U
 
 On average the server reports a CPU utilization of 0.6% with a peak value of 4.6% so far.
 
+The database reports an average CPU utilization of 3% .
