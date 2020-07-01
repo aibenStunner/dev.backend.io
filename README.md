@@ -5,10 +5,11 @@
 This repository contains:
 
     1.  the source code of the server which powers the Godseye platform.
-        [(developers branch)](https://gitlab.com/dev.io/dev.backend.io/-/tree/developers)
+        <a href="https://gitlab.com/dev.io/dev.backend.io/-/tree/developers">(developers branch)</a>
 
-    2.  the hardware code which runs on the Raspberry PI used as a camera hub
-        [(hardwareDev branch)](https://gitlab.com/dev.io/dev.backend.io/-/tree/hardwareDev)
+    2.  the hardware code which runs on the Raspberry PI used as a camera hub.
+        <a href="https://gitlab.com/dev.io/dev.backend.io/-/tree/hardwareDev">(hardwareDev branch)</a>
+        
 
 ## Server Information
 
