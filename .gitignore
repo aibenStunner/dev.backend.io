@@ -1,7 +1,0 @@
-#node
-node_modules/
-.elasticbeanstalk/
-
-.vscode/
-.idea/
-myapp.zip
