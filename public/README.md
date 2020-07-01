@@ -48,7 +48,10 @@
 
 **When contributing (by the way you're awesome for that so thanks) please keep your commits small and targeted when you're prepared to file a Pull Request. We’d prefer not seeing Pull Requests that contain 20 commits in multiple spots. Keep it small and it will make things simpler and much cleaner in the long run.**
 
-# Contributors
+# Authors & Contributors
 * Kelvin Onwudinjo
 * Kevin Otuteye
 * Edmund Lawerh Amanor
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
