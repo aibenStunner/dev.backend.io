@@ -1,6 +1,6 @@
 # GodsEye Backend
 
-![version](https://img.shields.io/static/v1?label=version&message=1.0.19&color=important&style=for-the-badge) ![status](https://img.shields.io/static/v1?label=status&message=production&color=blue&style=for-the-badge) ![backend](https://img.shields.io/static/v1?label=&message=Node.JS&color=success&style=for-the-badge&logo=Node.js) ![database](https://img.shields.io/static/v1?label=&message=MySQL&color=turquoise&style=for-the-badge&logo=mysql)
+![version](https://img.shields.io/static/v1?label=version&message=1.0.20&color=important&style=for-the-badge) ![status](https://img.shields.io/static/v1?label=status&message=production&color=blue&style=for-the-badge) ![backend](https://img.shields.io/static/v1?label=&message=Node.JS&color=success&style=for-the-badge&logo=Node.js) ![database](https://img.shields.io/static/v1?label=&message=MySQL&color=turquoise&style=for-the-badge&logo=mysql)
 
 Find it live at: [Godseye Backend](http://godseye-env.eba-gpcz6ppk.us-east-2.elasticbeanstalk.com/)
 
