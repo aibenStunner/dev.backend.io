@@ -239,7 +239,7 @@ opacity: 0.58;
   
   line-height: 28px;
   position: relative;
-  top: 600px;
+  top: 700px;
   
 }
 .top-small-text {
@@ -940,6 +940,22 @@ color: white;
   top: 700px;
   
 }
+
+
+
+.welcome-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+    background: url("login_background.svg") no-repeat center top ;
+  background-size: 66%;
+
+
+}
+
 .godseye,.godseye2{
   display: none;
 }
@@ -981,7 +997,7 @@ color: white;
   
   background: transparent no-repeat;
   position: sticky;
-  top: 660px;
+  top: 720px;
   background-attachment: fixed;
 
 }
