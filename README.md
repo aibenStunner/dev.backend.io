@@ -8,6 +8,8 @@ This branch contains:
 
     1.  the source code of the server which powers the Godseye platform.
 
+## Demo :movie_camera:
+Demo video can be found [here](https://youtu.be/0mx5jkTiKyU)
 
 ## API Documentation
 
