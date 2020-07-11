@@ -9,8 +9,6 @@ This branch contains:
 
     4.  the python script that communicates with the backend server.
 
-## Demo :movie_camera:
-Demo video can be found [here](https://youtu.be/0mx5jkTiKyU)
 
 ## Documentation :books:
 
