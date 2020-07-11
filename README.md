@@ -73,9 +73,6 @@ The camera feeds are made accessible over the internet using <a href="https://ng
 
 Other scripts (Python, BASH) were written to enable the setup function as a single unit.
 
-## Demo :movie_camera:
-Demo video can be found [here](https://youtu.be/0mx5jkTiKyU)
-
 [dev.io]()
 
 
