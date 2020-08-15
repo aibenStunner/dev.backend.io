@@ -5,10 +5,10 @@
 This repository contains:
 
 1.  the source code of the server which powers the Godseye platform.
-    <a href="https://gitlab.com/dev.io/dev.backend.io/-/tree/developers">(developers branch)</a>
+    <a href="https://github.com/aibenStunner/dev.backend.io/tree/developers">(developers branch)</a>
 
 2.  the hardware code which runs on the Raspberry PI used as a camera hub.
-    <a href="https://gitlab.com/dev.io/dev.backend.io/-/tree/hardwareDev">(hardwareDev branch)</a>
+    <a href="https://github.com/aibenStunner/dev.backend.io/tree/hardwareDev">(hardwareDev branch)</a>
         
 
 ## Server Information
@@ -61,7 +61,7 @@ Ngrok cloud service accepts traffic on a public address and relays that traffic 
 
 ### Documentation :books:
 
-Guidelines to how this setup can be done are available <a href="https://gitlab.com/dev.io/dev.backend.io/-/blob/hardwareDev/docs.pdf">here</a>.
+Guidelines to how this setup can be done are available <a href="https://github.com/aibenStunner/dev.backend.io/blob/hardwareDev/docs.pdf">here</a>.
 
 ### Technical Details ⚙️
 
@@ -73,6 +73,6 @@ The camera feeds are made accessible over the internet using <a href="https://ng
 
 Other scripts (Python, BASH) were written to enable the setup function as a single unit.
 
-[dev.io]()
+[dev.io](https://github.com/aibenStunner/dev.backend.io)
 
 
