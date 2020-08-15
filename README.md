@@ -12,7 +12,7 @@ This branch contains:
 
 ## Documentation :books:
 
-Guidelines to how this setup can be done are available <a href="https://gitlab.com/dev.io/dev.backend.io/-/blob/hardwareDev/docs.pdf">here</a>.
+Guidelines to how this setup can be done are available <a href="https://github.com/aibenStunner/dev.backend.io/blob/hardwareDev/docs.pdf">here</a>.
 
 ## Technical Details :seedling:
 
